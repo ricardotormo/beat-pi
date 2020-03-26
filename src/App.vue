@@ -1,32 +1,43 @@
 <template>
   <div id="app">
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
-    <General />
+    <DrumContainer />
     <TopBar />
-    <InstRow />
-    <Modal />
+    <DrumRow />
     <Button />
   </div>
 </template>
 
 <script>
 // import HelloWorld from "./components/HelloWorld.vue";
-import General from "./components/General.vue";
+import DrumContainer from "./components/DrumContainer.vue";
 import TopBar from "./components/TopBar.vue";
-import InstRow from "./components/InstRow.vue";
-import Modal from "./components/Modal.vue";
+import DrumRow from "./components/DrumRow.vue";
+// import Modal from "./components/Modal.vue";
 import Button from "./components/Button.vue";
 
 export default {
   name: "App",
   components: {
     // HelloWorld
-    General,
+    DrumContainer,
     TopBar,
-    InstRow,
-    Modal,
+    DrumRow,
+    // Modal,
     Button
+  },
+  data() {
+    return {
+      isModalVisible: false
+    };
   }
+  // methods: {
+  //   showModal() {
+  //     this.isModalVisible = true;
+  //   },
+  //   closeModal() {
+  //     this.isModalVisible = false;
+  //   }
+  // }
 };
 </script>
 
