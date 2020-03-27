@@ -7,15 +7,10 @@
         aria-labelledby="modalTitle"
         aria-describedby="modalDescription"
       >
-        <header class="modal-header" id="modalTitle">
+        <header class="modal-header">
           <slot name="header">
-            Choose your Drum
-            <button
-              type="button"
-              class="btn-close"
-              @click="close()"
-              aria-label="Close modal"
-            >x</button>
+            <p id="choose-title">Choose your Drum</p>
+            <button type="button" class="btn-close" @click="close()" aria-label="Close modal">x</button>
           </slot>
         </header>
         <section class="modal-body" id="modalDescription">
@@ -34,15 +29,16 @@
                   v-for="(instrument, type) in instruments"
                   :key="type"
                   class="typeItems"
-                  @click="showInstList(instruments[type])"
+                  @click="showInstList(type)"
                 >{{ type }}</li>
               </ul>
             </div>
             <!-- ***************************? -->
             <div class="types-name">
               <ul class="type-name-list">
-                <li v-for="(active, name) in activeTypeEls" :key="name" class="typeNames">
-                  <span>{{ active.name }}</span>
+                <!-- { id: "drum_heavy_kick", name: "drum_heavy_kick " } -->
+                <li v-for="(active, i) in activeTypeEls" :key="i" class="typeNames">
+                  <span @click="addInst(active.name)">{{ active.name }}</span>
                 </li>
               </ul>
             </div>
@@ -58,7 +54,8 @@ export default {
   data() {
     return {
       instruments: drumList,
-      activeTypeEls: null
+      activeTypeEls: null,
+      activeType: null
     };
   },
   methods: {
@@ -66,21 +63,32 @@ export default {
       this.$emit("close");
     },
     showInstList(type) {
-      this.activeTypeEls = type;
+      this.activeType = type;
+      this.activeTypeEls = this.instruments[type];
+    },
+    addInst(name) {
+      this.$emit("childToParent", { name, type: this.activeType });
     }
   }
 };
 </script>
 <style lang="scss">
+body {
+  position: relative;
+}
 .modal-backdrop {
-  // top: 0;
-  // bottom: 0;
-  // left: 0;
-  // right: 0;
-  // background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  max-height: 60vh;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 .modal {
@@ -90,26 +98,24 @@ export default {
   display: flex;
   flex-direction: column;
   width: 60%;
-  max-height: 70vh;
-}
-
-.modal-header,
-.modal-footer {
-  padding: 15px;
-  display: flex;
+  max-height: 60vh;
 }
 
 .modal-header {
   border-bottom: 1px solid #eeeeee;
   color: #000;
-  justify-content: space-between;
+  // justify-content: space-between;
+  position: relative;
 }
 
 .modal-body {
   position: relative;
   padding: 20px 10px;
 }
-
+// #choose-title {
+//   position: absolute;
+//   text-align: center;
+// }
 .btn-close {
   border: none;
   font-size: 20px;
@@ -118,6 +124,9 @@ export default {
   font-weight: bold;
   color: rgba(51, 91, 12, 0.2);
   background: transparent;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .types {
@@ -135,8 +144,8 @@ export default {
 }
 .types-parent {
   width: 95%;
-  border: 1px solid black;
-  border-radius: 10px;
+  // border: 1px solid black;
+  // border-radius: 10px;
   overflow: auto;
   display: flex;
   padding-left: 0;
@@ -156,8 +165,6 @@ li.typeNames {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  /*    display:flex; */
-  /*    text-align:justify; */
 }
 .typeNames span {
   display: flex;
@@ -165,7 +172,6 @@ li.typeNames {
 
 .type-name-list {
   display: flex;
-  /*     background:red; */
   flex-wrap: wrap;
   width: 100%;
 }

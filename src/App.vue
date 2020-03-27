@@ -2,7 +2,7 @@
   <div id="app">
     <DrumContainer />
     <TopBar />
-    <DrumRow />
+    <!-- <DrumRow /> -->
     <Button />
   </div>
 </template>
@@ -11,7 +11,7 @@
 // import HelloWorld from "./components/HelloWorld.vue";
 import DrumContainer from "./components/DrumContainer.vue";
 import TopBar from "./components/TopBar.vue";
-import DrumRow from "./components/DrumRow.vue";
+// import DrumRow from "./components/DrumRow.vue";
 // import Modal from "./components/Modal.vue";
 import Button from "./components/Button.vue";
 
@@ -21,7 +21,7 @@ export default {
     // HelloWorld
     DrumContainer,
     TopBar,
-    DrumRow,
+    // DrumRow,
     // Modal,
     Button
   },
