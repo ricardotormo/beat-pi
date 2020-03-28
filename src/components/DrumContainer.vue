@@ -1,13 +1,24 @@
 <template>
   <div class="general">
     <button type="button" class="btn" @click="showModal">Open Modal!</button>
-    <Modal v-show="isModalVisible" @close="closeModal" @childToParent="onEmitInst" />
+    <button type="button" class="btn" @click="showModalGen">
+      Open Modal Gen!
+    </button>
+    <button class="btn" type="button" @click="openSweet">open sweet</button>
+    <sweet-modal ref="modal">
+      <SelectInstrument />
+    </sweet-modal>
+
     <div class="drumPad">
       <div class="drumkit-container">
         <div class="row">
           <div class="row beats">
             <template v-for="(instrument, i) in instruments">
-              <DrumRow :key="i" :instrument="instrument" @beatToParent="onEmitBeat" />
+              <DrumRow
+                :key="i"
+                :instrument="instrument"
+                @beatToParent="onEmitBeat"
+              />
             </template>
           </div>
         </div>
@@ -17,44 +28,57 @@
 </template>
 <script>
 import DrumRow from "@/components/DrumRow.vue";
-import Modal from "@/components/Modal.vue";
-import DrumPad from "../drum/DrumPad";
+import SelectInstrument from "@/components/SelectInstrument.vue";
+import BeatPad from "../drum/BeatPad";
 export default {
   name: "DrumContainer",
   components: {
-    Modal,
+    SelectInstrument,
     DrumRow
   },
   data() {
     return {
       isModalVisible: false,
-      drumPad: new DrumPad(16),
+      beatPad: new BeatPad(16),
       instruments: []
     };
   },
   methods: {
+    openSweet() {
+      this.$refs.modal.open();
+    },
     showModal() {
       this.isModalVisible = true;
     },
     closeModal() {
       this.isModalVisible = false;
     },
-    addInstrument(type) {
-      this.instruments = this.drumPad.addInstrument(type).getPad();
+    showModalGen() {
+      this.isModalVisible = true;
     },
-    removeInstrument(type) {
-      this.instruments = this.drumPad.removeInstrument(type).getPad();
+    closeModalGen() {
+      this.isModalVisible = false;
     },
-    onEmitInst(inst) {
-      this.addInstrument(inst.name);
+    addInstrument(instrument) {
+      this.instruments = this.beatPad
+        .addInstrument(instrument)
+        .getInstruments();
     },
-    onEmitBeat(inst) {
-      if (this.drumPad.pad[inst.type][inst.pos] == 1) {
-        this.instruments = this.drumPad
-          .removeBeat(inst.type, inst.pos)
-          .getPad();
+    removeInstrument(instrument) {
+      this.instruments = this.beatPad
+        .removeInstrument(instrument)
+        .getInstruments();
+    },
+    onEmitInst(instrument) {
+      const { name } = instrument;
+      this.addInstrument(name);
+    },
+    onEmitBeat(instrument) {
+      const { type, pos } = instrument;
+      if (this.beatPad.instruments[type][pos] == 1) {
+        this.instruments = this.beatPad.removeBeat(type, pos).getInstruments();
       } else {
-        this.instruments = this.drumPad.addBeat(inst.type, inst.pos).getPad();
+        this.instruments = this.beatPad.addBeat(type, pos).getInstruments();
       }
     }
   }

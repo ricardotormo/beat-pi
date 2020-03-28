@@ -1,20 +1,16 @@
 <template>
   <div id="app">
     <DrumContainer />
-    <TopBar />
-    <Button />
   </div>
 </template>
 
 <script>
 import DrumContainer from "./components/DrumContainer.vue";
-import Button from "./components/Button.vue";
 
 export default {
   name: "App",
   components: {
-    DrumContainer,
-    Button
+    DrumContainer
   },
   data() {
     return {
