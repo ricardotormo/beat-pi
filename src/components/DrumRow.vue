@@ -25,7 +25,6 @@ export default {
   methods: {
     toggleBeat(type, pos) {
       this.$emit("beatToParent", { type, pos });
-      // this.$emit("beatToParent", { type: type, pos: pos });
     }
   }
 };

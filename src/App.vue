@@ -2,27 +2,18 @@
   <div id="app">
     <DrumContainer />
     <TopBar />
-    <!-- <DrumRow /> -->
     <Button />
   </div>
 </template>
 
 <script>
-// import HelloWorld from "./components/HelloWorld.vue";
 import DrumContainer from "./components/DrumContainer.vue";
-import TopBar from "./components/TopBar.vue";
-// import DrumRow from "./components/DrumRow.vue";
-// import Modal from "./components/Modal.vue";
 import Button from "./components/Button.vue";
 
 export default {
   name: "App",
   components: {
-    // HelloWorld
     DrumContainer,
-    TopBar,
-    // DrumRow,
-    // Modal,
     Button
   },
   data() {
@@ -30,14 +21,6 @@ export default {
       isModalVisible: false
     };
   }
-  // methods: {
-  //   showModal() {
-  //     this.isModalVisible = true;
-  //   },
-  //   closeModal() {
-  //     this.isModalVisible = false;
-  //   }
-  // }
 };
 </script>
 

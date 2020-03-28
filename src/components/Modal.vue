@@ -33,10 +33,8 @@
                 >{{ type }}</li>
               </ul>
             </div>
-            <!-- ***************************? -->
             <div class="types-name">
               <ul class="type-name-list">
-                <!-- { id: "drum_heavy_kick", name: "drum_heavy_kick " } -->
                 <li v-for="(active, i) in activeTypeEls" :key="i" class="typeNames">
                   <span @click="addInst(active.name)">{{ active.name }}</span>
                 </li>
@@ -104,7 +102,6 @@ body {
 .modal-header {
   border-bottom: 1px solid #eeeeee;
   color: #000;
-  // justify-content: space-between;
   position: relative;
 }
 
@@ -112,10 +109,7 @@ body {
   position: relative;
   padding: 20px 10px;
 }
-// #choose-title {
-//   position: absolute;
-//   text-align: center;
-// }
+
 .btn-close {
   border: none;
   font-size: 20px;
@@ -144,8 +138,6 @@ body {
 }
 .types-parent {
   width: 95%;
-  // border: 1px solid black;
-  // border-radius: 10px;
   overflow: auto;
   display: flex;
   padding-left: 0;
