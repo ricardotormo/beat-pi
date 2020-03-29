@@ -1,0 +1,45 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 28/03/2020 21:08
+  	*/
+
+@font-face {
+  font-family: "InstrumentFont";
+  src: url("./fonts/instrument-font/instrument-icon.eot");
+  src: url("./fonts/instrument-font/instrument-icon.eot?#iefix") format("embedded-opentype"),
+       url("./fonts/instrument-font/instrument-icon.woff2") format("woff2"),
+       url("./fonts/instrument-font/instrument-icon.woff") format("woff"),
+       url("./fonts/instrument-font/instrument-icon.ttf") format("truetype"),
+       url("./fonts/instrument-font/instrument-icon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "InstrumentFont";
+    src: url("./fonts/instrument-font/instrument-icon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="inst-"]:before, [class*=" inst-"]:before,
+[class^="inst-"]:after, [class*=" inst-"]:after {   
+  font-family: Flaticon;
+        font-size: 20px;
+font-style: normal;
+margin-left: 20px;
+}
+
+.inst-christmas-drum:before { content: "\f100"; }
+.inst-drum-set-cartoon-variant:before { content: "\f101"; }
+.inst-flash:before { content: "\f102"; }
+.inst-progress-arrows:before { content: "\f103"; }
+.inst-bass-guitar:before { content: "\f104"; }
+.inst-sound:before { content: "\f105"; }
+.inst-vinyl:before { content: "\f106"; }
+.inst-letter-m:before { content: "\f107"; }
+.inst-shuttle:before { content: "\f108"; }
+.inst-shuffle-arrows:before { content: "\f109"; }
+.inst-robot:before { content: "\f10a"; }
+.inst-drumsticks:before { content: "\f10b"; }
+.inst-tablas:before { content: "\f10c"; }

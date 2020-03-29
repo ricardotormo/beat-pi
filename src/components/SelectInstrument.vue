@@ -1,45 +1,21 @@
 <template>
-  <transition name="modal-fade">
-    <div class="modal-backdrop">
-      <div
-        class="modal"
-        role="dialog"
-        aria-labelledby="modalTitle"
-        aria-describedby="modalDescription"
-      >
-        <header class="modal-header">
-          <p id="choose-title">Choose your Instrument</p>
-        </header>
-        <section class="modal-body" id="modalDescription">
-          <div class="types-parent">
-            <div class="types-type">
-              <ul class="types">
-                <li
-                  v-for="(instrument, type) in instruments"
-                  :key="type"
-                  class="typeItems"
-                  @click="showInstList(type)"
-                >
-                  {{ type }}
-                </li>
-              </ul>
-            </div>
-            <div class="types-name">
-              <ul class="type-name-list">
-                <li
-                  v-for="(active, i) in activeTypeEls"
-                  :key="i"
-                  class="typeNames"
-                >
-                  <span @click="addInst(active.name)">{{ active.name }}</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-      </div>
+  <fragment>
+    <ul class="instruments-type">
+      <li
+        v-for="(instrument, type) in instruments"
+        :key="type"
+        class="instrument"
+        @click="showInstList(type)"
+      >{{ type }}</li>
+    </ul>
+    <div class="instrument-name">
+      <ul class="type-name-list">
+        <li v-for="(active, i) in activeTypeEls" :key="i" class="typeNames">
+          <span @click="addInst(active.name)">{{ active.name }}</span>
+        </li>
+      </ul>
     </div>
-  </transition>
+  </fragment>
 </template>
 <script>
 import drumList from "../drum/drum-list";
@@ -62,4 +38,29 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss">
+* {
+  box-sizing: border-box;
+}
+
+.sweet-content-content {
+  display: flex !important;
+  border-top: 1px solid #ccc !important;
+}
+
+.instruments-type {
+  width: 30%;
+  box-shadow: 1px 0 #ccc;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  margin: 0;
+  .instrument {
+    height: 60px;
+    box-shadow: 0 1px #ccc;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+  }
+}
+</style>
