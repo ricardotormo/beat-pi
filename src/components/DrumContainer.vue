@@ -1,9 +1,5 @@
 <template>
   <div class="general">
-    <button type="button" class="btn" @click="showModal">Open Modal!</button>
-    <button type="button" class="btn" @click="showModalGen">
-      Open Modal Gen!
-    </button>
     <button class="btn" type="button" @click="openSweet">open sweet</button>
     <sweet-modal ref="modal">
       <SelectInstrument />
@@ -46,18 +42,6 @@ export default {
   methods: {
     openSweet() {
       this.$refs.modal.open();
-    },
-    showModal() {
-      this.isModalVisible = true;
-    },
-    closeModal() {
-      this.isModalVisible = false;
-    },
-    showModalGen() {
-      this.isModalVisible = true;
-    },
-    closeModalGen() {
-      this.isModalVisible = false;
     },
     addInstrument(instrument) {
       this.instruments = this.beatPad
