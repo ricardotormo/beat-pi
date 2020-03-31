@@ -8,16 +8,16 @@
         class="instrument"
         @click="showInstList(type)"
       >
-        <span class="icon-space"></span>
+        <span class="icon-space">
+          <i :class="`inst-${type}`"></i>
+        </span>
         {{ type }}
       </li>
     </ul>
     <div class="instrument-name">
       <ul class="type-name-list">
         <li v-for="(active, i) in activeTypeEls" :key="i" class="typeNames">
-          <span @click="addInst(active.name)" id="type-name-list-span">
-            {{ active.name }}
-          </span>
+          <span @click="addInst(active.name)" id="type-name-list-span">{{ active.name }}</span>
         </li>
       </ul>
     </div>
@@ -45,14 +45,14 @@ export default {
 };
 </script>
 <style lang="scss">
-// @import "../assets/css/_flaticon.scss";
+@import "../assets/css/flaticon.css";
 * {
   box-sizing: border-box;
 }
 
 .sweet-modal {
-  max-height: 80% !important;
-  overflow: hidden !important;
+  max-height: 90% !important;
+  //overflow: hidden !important;
 }
 
 .sweet-content {
@@ -66,8 +66,8 @@ export default {
 }
 
 .instruments-type {
-  width: 30%;
-  box-shadow: 1px 0 #ccc;
+  width: 40%;
+  box-shadow: 1px 0 #d8d7d8;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -91,18 +91,28 @@ export default {
     padding-left: 15px;
     cursor: pointer;
 
+    i {
+      color: #6020ae;
+      position: relative;
+      top: 4px;
+      &:before {
+        margin: 0;
+      }
+    }
+
     .icon-space {
       height: 40px;
       width: 40px;
       background-color: rgba(90, 0, 170, 0.1);
-      margin-right: 5px;
+      margin-right: 12px;
       border-radius: 50%;
       min-width: 40px;
+      text-align: center;
     }
   }
 }
 .instrument-name {
-  width: 70%;
+  width: 60%;
   & .type-name-list {
     padding: 0;
     width: 100%;
@@ -121,12 +131,6 @@ export default {
       display: flex;
       align-items: center;
       background-color: #f5f5f5;
-
-      // &:hover {
-
-      // }
-    }
-    & #type-name-list-span {
     }
   }
 }
