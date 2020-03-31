@@ -1,8 +1,9 @@
 <template>
   <div class="general">
     <button class="btn" type="button" @click="openSweet">open sweet</button>
-    <sweet-modal ref="modal">
-      <SelectInstrument />
+    <sweet-modal ref="modal" title="Search your Instrument">
+      <template slot="box-action"></template>
+      <SelectInstrument @emitAddInst="onEmitInst" />
     </sweet-modal>
 
     <div class="drumPad">
@@ -10,11 +11,7 @@
         <div class="row">
           <div class="row beats">
             <template v-for="(instrument, i) in instruments">
-              <DrumRow
-                :key="i"
-                :instrument="instrument"
-                @beatToParent="onEmitBeat"
-              />
+              <DrumRow :key="i" :instrument="instrument" @beatToParent="onEmitBeat" />
             </template>
           </div>
         </div>
@@ -34,19 +31,26 @@ export default {
   },
   data() {
     return {
+      searchInstruments: "",
       isModalVisible: false,
       beatPad: new BeatPad(16),
       instruments: []
     };
   },
   methods: {
+    closeSweet() {
+      this.$refs.modal.close();
+    },
     openSweet() {
       this.$refs.modal.open();
+      document.querySelector("body").style = "";
     },
     addInstrument(instrument) {
       this.instruments = this.beatPad
         .addInstrument(instrument)
         .getInstruments();
+      // close Modal after an instrument is added
+      this.closeSweet();
     },
     removeInstrument(instrument) {
       this.instruments = this.beatPad

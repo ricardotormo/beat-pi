@@ -11,13 +11,25 @@
         <span class="icon-space">
           <i :class="`inst-${type}`"></i>
         </span>
-        {{ type }}
+        {{ type | capitalize | toSpace }}
       </li>
     </ul>
     <div class="instrument-name">
+      <input
+        class="search-inst-input"
+        v-if="activeTypeEls.length"
+        type="text"
+        v-model="searchInstruments"
+        placeholder="Search Instrument"
+      />
       <ul class="type-name-list">
-        <li v-for="(active, i) in activeTypeEls" :key="i" class="typeNames">
-          <span @click="addInst(active.name)" id="type-name-list-span">{{ active.name }}</span>
+        <li
+          @click="addInst(active.name)"
+          v-for="(active, i) in filterInstruments"
+          :key="i"
+          class="typeNames"
+        >
+          <span id="type-name-list-span">{{ active.name | capitalize | toSpace }}</span>
         </li>
       </ul>
     </div>
@@ -29,17 +41,44 @@ export default {
   data() {
     return {
       instruments: drumList,
-      activeTypeEls: null,
-      activeType: null
+      activeTypeEls: drumList["drums"],
+      activeType: "drums",
+      searchInstruments: ""
     };
+  },
+  filters: {
+    capitalize: function(value) {
+      if (!value) return "";
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    },
+    toSpace: function(value) {
+      if (!value) return "";
+      value = value.toString();
+      return value.replace(/_/g, " ");
+    }
   },
   methods: {
     showInstList(type) {
       this.activeType = type;
       this.activeTypeEls = this.instruments[type];
+      this.searchInstruments = "";
     },
     addInst(name) {
-      this.$emit("childToParent", { name, type: this.activeType });
+      this.$emit("emitAddInst", { name, type: this.activeType });
+    }
+  },
+  computed: {
+    filterInstruments: function() {
+      if (!this.searchInstruments.length) {
+        return this.activeTypeEls;
+      }
+      return this.activeTypeEls.filter(instrument => {
+        return instrument.name
+          .toLowerCase()
+          .replace(/_/g, " ")
+          .includes(this.searchInstruments.toLowerCase());
+      });
     }
   }
 };
@@ -59,10 +98,26 @@ export default {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
+.sweet-modal .sweet-content {
+  padding-top: 0 !important;
+}
 
+.sweet-modal-overlay {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
 .sweet-content-content {
   display: flex !important;
-  border-top: 1px solid #ccc !important;
+  // border-top: 1px solid #ccc !important;
+}
+.search-inst-input {
+  margin: 20px auto 20px;
+  outline: none;
+  height: 35px;
+  width: 60%;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  padding-left: 10px;
+  display: block;
 }
 
 .instruments-type {
