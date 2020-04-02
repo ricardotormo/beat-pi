@@ -16,7 +16,7 @@
         @click="toggleBeat(instrument.type, i)"
         v-for="(beat, i) in instrument.beats"
         :key="i"
-        :class="{ active: beat == 1  }"
+        :class="{ active: beat == 1 }"
       ></div>
     </fragment>
   </fragment>
@@ -70,10 +70,9 @@ export default {
     border-radius: 50%;
     text-align: center;
     color: rgba(0, 0, 0, 0.7);
-    i {
-      position: relative;
-      bottom: 1px;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
