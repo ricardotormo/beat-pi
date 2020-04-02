@@ -1,6 +1,15 @@
 <template>
   <fragment>
-    <div class="type">{{ instrument.type }}</div>
+    <div class="type">
+      <div class="trash" @click="removeInstrument(instrument.type)">
+        <span>
+          <i class="fi-trash"></i>
+        </span>
+      </div>
+      <div class="name">
+        <span class="instrument-cell">{{ instrument.type }}</span>
+      </div>
+    </div>
     <fragment>
       <div
         class="cell"
@@ -25,177 +34,57 @@ export default {
   methods: {
     toggleBeat(type, pos) {
       this.$emit("beatToParent", { type, pos });
+    },
+    removeInstrument(instrument) {
+      this.$emit("removeToParent", { name: instrument });
     }
   }
 };
 </script>
-<style lang="scss">
-html {
-  background: #4d4d4d;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-body {
-  width: 100%;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 600;
-}
-
-.drumPad {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
-
-.drumkit-container {
-  display: flex;
-  background: #555;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 1200px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-  font-size: 1em;
-}
-
-.beats {
-  position: relative;
-}
-
-.cell {
-  width: calc((100% - 12.5%) / 16);
-  height: 70px;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.9);
-  cursor: pointer;
-}
-
+<style lang="scss" scoped>
 .type {
-  background: #6c6c6c;
-  width: 12.5%;
-  height: 70px;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.9), 2px 0px #444;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  color: white;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.break {
-  flex-basis: 100%;
-  height: 0;
-}
-
-.cell.active {
-  background: #fed134;
-}
-
-.play-btn {
-  height: 60px;
-  width: 12.5%;
-  background: #fff;
-  font-size: 2em;
   display: flex;
   justify-content: center;
-  align-items: center;
-  color: #666666;
-  cursor: pointer;
+  align-content: center;
+  & .name {
+    width: 80%;
+  }
 }
-
-.beat-pos {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.6);
-  margin-left: 12.5%;
-  width: 2px;
+.trash {
   height: 100%;
-  left: 0;
-}
-
-.active-beat-half {
-  animation-name: beat-animation-half;
-  animation-timing-function: linear;
-}
-
-.active-beat-whole {
-  animation-name: beat-animation-whole;
-  animation-timing-function: linear;
-}
-
-@keyframes beat-animation-half {
-  from {
-    left: 0;
-  }
-  to {
-    left: 43.75%;
-  }
-}
-
-@keyframes beat-animation-whole {
-  from {
-    left: 43.75%;
-  }
-  to {
-    left: 87.5%;
-  }
-}
-
-.info-bpm {
+  box-shadow: 1px 0 0 rgba(0, 0, 0, 0.6);
+  display: flex;
   justify-content: center;
   align-items: center;
-  display: flex;
-  color: #fff;
-  margin-bottom: 30px;
-}
-
-.slidecontainer {
-  display: flex;
-  width: 100%;
-  padding: 0 1em;
-  box-sizing: border-box;
-  justify-content: center;
-  align-items: center;
-  height: 70px;
-}
-
-.slider {
-  width: 100%;
-  -webkit-appearance: none;
-  height: 5px;
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: 0.2s;
-  transition: opacity 0.2s;
-}
-
-.slider:hover {
-  opacity: 1;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #fff;
+  width: 20%;
   cursor: pointer;
+  &:hover {
+    span {
+      background: rgba(255, 255, 255, 0.6);
+    }
+  }
+  span {
+    height: 20px;
+    width: 20px;
+    background: white;
+    border-radius: 50%;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.7);
+    i {
+      position: relative;
+      bottom: 1px;
+    }
+  }
 }
 
-.slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: #fff;
-  cursor: pointer;
+.instrument-cell {
+  text-align: center;
+  max-width: 80%;
+  margin: auto;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 0.7em;
 }
 </style>

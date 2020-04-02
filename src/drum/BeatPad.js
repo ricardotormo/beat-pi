@@ -24,6 +24,11 @@ export default class BeatPad {
     return this;
   }
 
+  removeAllInstruments() {
+    this.instruments = {};
+    return this;
+  }
+
   getInstruments() {
     return Object.keys(this.instruments).map(type => {
       return { type: type, beats: this.instruments[type] };

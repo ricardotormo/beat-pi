@@ -91,7 +91,7 @@ export default {
 
 .sweet-modal {
   max-height: 90% !important;
-  //overflow: hidden !important;
+  overflow: hidden !important;
 }
 
 .sweet-content {
@@ -107,10 +107,9 @@ export default {
 }
 .sweet-content-content {
   display: flex !important;
-  // border-top: 1px solid #ccc !important;
 }
 .search-inst-input {
-  margin: 20px auto 20px;
+  margin: 20px auto;
   outline: none;
   height: 35px;
   width: 60%;
@@ -127,6 +126,8 @@ export default {
   margin: 0;
   list-style: none;
   margin: 0;
+  height: 80vh;
+  overflow: auto;
   .active {
     background: #5a00aa;
     color: white;
@@ -168,6 +169,8 @@ export default {
 }
 .instrument-name {
   width: 60%;
+  height: 80vh;
+  overflow: auto;
   & .type-name-list {
     padding: 0;
     width: 100%;

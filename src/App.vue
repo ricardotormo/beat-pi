@@ -21,4 +21,9 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./assets/css/foundation-icons.css";
+#app {
+  margin: 5% auto 0 auto;
+  max-width: 1200px;
+}
 </style>
