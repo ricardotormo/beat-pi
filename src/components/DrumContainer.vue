@@ -45,6 +45,7 @@ import Tempo from "@/components/Tempo.vue";
 import DrumRow from "@/components/DrumRow.vue";
 import SelectInstrument from "@/components/SelectInstrument.vue";
 import BeatPad from "../drum/BeatPad";
+
 export default {
   name: "DrumContainer",
   components: {
@@ -57,7 +58,8 @@ export default {
       searchInstruments: "",
       isModalVisible: false,
       beatPad: new BeatPad(16),
-      instruments: []
+      instruments: [],
+      socket: new WebSocket("ws://localhost:8999")
     };
   },
   methods: {
@@ -101,11 +103,30 @@ export default {
     }
   },
   watch: {
-    instruments: function(val) {
-      console.log(val);
+    instruments: function(values, oldValues) {
+      if (values.length > oldValues.length) {
+        const addedValue = getAddedValue(values);
+        console.log(addedValue);
+        /*this.socket.send(
+          JSON.stringify({ type: addedValue.type, data: addedValue.beats })
+        );*/
+      } else if (values.length < oldValues.length) {
+        const removedValue = getRemovedValue(oldValues, values);
+        console.log(removedValue);
+      }
     }
   }
 };
+
+function getAddedValue(values) {
+  return values[values.length - 1];
+}
+
+function getRemovedValue(oldValues, currentValues) {
+  return oldValues.filter(oldVal => {
+    return !currentValues.find(currVal => currVal.type == oldVal.type);
+  });
+}
 </script>
 
 <style lang="scss">

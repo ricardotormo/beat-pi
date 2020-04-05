@@ -15,12 +15,13 @@
       </li>
     </ul>
     <div class="instrument-name">
+      <span sytle="font-family: foundation-icons;">&#xf16c;</span>
       <input
         class="search-inst-input"
         v-if="activeTypeEls.length"
         type="text"
         v-model="searchInstruments"
-        placeholder="Search Instrument"
+        placeholder="&#xf16c;Search Instrument"
       />
       <ul class="type-name-list">
         <li
