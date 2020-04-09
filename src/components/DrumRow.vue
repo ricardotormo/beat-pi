@@ -1,19 +1,19 @@
 <template>
   <fragment>
     <div class="type">
-      <div class="trash" @click="removeInstrument(instrument.type)">
+      <div class="trash" @click="removeInstrument(instrument.name)">
         <span>
           <i class="fi-trash"></i>
         </span>
       </div>
       <div class="name">
-        <span class="instrument-cell">{{ instrument.type }}</span>
+        <span class="instrument-cell">{{ instrument.name }}</span>
       </div>
     </div>
     <fragment>
       <div
         class="cell"
-        @click="toggleBeat(instrument.type, i)"
+        @click="toggleBeat(instrument.name, i)"
         v-for="(beat, i) in instrument.beats"
         :key="i"
         :class="{ active: beat == 1 }"
@@ -32,8 +32,8 @@ export default {
     return {};
   },
   methods: {
-    toggleBeat(type, pos) {
-      this.$emit("beatToParent", { type, pos });
+    toggleBeat(name, pos) {
+      this.$emit("beatToParent", { name, pos });
     },
     removeInstrument(instrument) {
       this.$emit("removeToParent", { name: instrument });

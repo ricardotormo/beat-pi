@@ -45,6 +45,8 @@ import Tempo from "@/components/Tempo.vue";
 import DrumRow from "@/components/DrumRow.vue";
 import SelectInstrument from "@/components/SelectInstrument.vue";
 import BeatPad from "../drum/BeatPad";
+const bPad = new BeatPad(16);
+const socket = new WebSocket("ws://localhost:8999");
 
 export default {
   name: "DrumContainer",
@@ -57,9 +59,7 @@ export default {
     return {
       searchInstruments: "",
       isModalVisible: false,
-      beatPad: new BeatPad(16),
-      instruments: [],
-      socket: new WebSocket("ws://localhost:8999")
+      instruments: []
     };
   },
   methods: {
@@ -71,18 +71,14 @@ export default {
       document.querySelector("body").style = "";
     },
     reset() {
-      this.instruments = this.beatPad.removeAllInstruments().getInstruments();
+      this.instruments = bPad.removeAllInstruments().instruments;
     },
     addInstrument(instrument) {
-      this.instruments = this.beatPad
-        .addInstrument(instrument)
-        .getInstruments();
+      this.instruments = bPad.addInstrument(instrument).instruments;
       this.closeSweet();
     },
     removeInstrument(instrument) {
-      this.instruments = this.beatPad
-        .removeInstrument(instrument)
-        .getInstruments();
+      this.instruments = bPad.removeInstrument(instrument).instruments;
     },
     onEmitAddInst(instrument) {
       const { name } = instrument;
@@ -93,39 +89,50 @@ export default {
       this.removeInstrument(name);
     },
     onEmitBeat(instrument) {
-      const { type, pos } = instrument;
-      const beatValue = this.beatPad.instruments[type][pos];
-      if (beatValue == 1) {
-        this.instruments = this.beatPad.removeBeat(type, pos).getInstruments();
-        return;
-      }
-      this.instruments = this.beatPad.addBeat(type, pos).getInstruments();
+      const { name, pos } = instrument;
+      const beatValue = bPad._instruments[name][pos];
+      const action = beatValue == 1 ? "removeBeat" : "addBeat";
+      bPad[action](name, pos);
+      this.instruments = bPad.instruments;
+      const message = JSON.stringify({
+        address: "instrument/set_beats",
+        name,
+        beats: bPad._instruments[name]
+      });
+      socket.send(message);
     }
   },
   watch: {
-    instruments: function(values, oldValues) {
-      if (values.length > oldValues.length) {
-        const addedValue = getAddedValue(values);
-        console.log(addedValue);
-        /*this.socket.send(
-          JSON.stringify({ type: addedValue.type, data: addedValue.beats })
-        );*/
-      } else if (values.length < oldValues.length) {
-        const removedValue = getRemovedValue(oldValues, values);
-        console.log(removedValue);
+    instruments: function(newVal, oldVal) {
+      if (newVal.length > oldVal.length) {
+        const { name, beats } = getAddedInstrument(newVal);
+        const message = JSON.stringify({
+          address: "instrument/add_instrument",
+          name,
+          beats
+        });
+        socket.send(message);
+      } else if (newVal.length < oldVal.length) {
+        const { name, beats } = getRemovedInstrument(oldVal, newVal);
+        const message = JSON.stringify({
+          address: "instrument/remove_instrument",
+          name,
+          beats
+        });
+        socket.send(message);
       }
     }
   }
 };
 
-function getAddedValue(values) {
+function getAddedInstrument(values) {
   return values[values.length - 1];
 }
 
-function getRemovedValue(oldValues, currentValues) {
+function getRemovedInstrument(oldValues, currentValues) {
   return oldValues.filter(oldVal => {
-    return !currentValues.find(currVal => currVal.type == oldVal.type);
-  });
+    return !currentValues.find(currVal => currVal.name == oldVal.name);
+  })[0];
 }
 </script>
 
