@@ -25,6 +25,7 @@
             <span>Please add a new instrument</span>
           </div>
           <div v-else class="row beats">
+            <div class="beat-pos"></div>
             <Tempo />
             <template v-for="(instrument, i) in instruments">
               <DrumRow
@@ -122,6 +123,31 @@ export default {
         socket.send(message);
       }
     }
+  },
+  mounted() {
+    socket.onmessage = function(msg) {
+      const beatPosEl = document.querySelector(".beat-pos");
+
+      if (!beatPosEl) {
+        return;
+      }
+      const val = eval(JSON.parse(msg.data).args[0].value);
+
+      if (val[0] == 1) {
+        beatPosEl.classList.remove("active-beat-whole");
+        beatPosEl.classList.add("active-beat-half");
+        document.querySelector(
+          ".active-beat-half"
+        ).style.animationDuration = `${val[1]}s`;
+      }
+      if (val[0] == 2) {
+        beatPosEl.classList.remove("active-beat-half");
+        beatPosEl.classList.add("active-beat-whole");
+        document.querySelector(
+          ".active-beat-whole"
+        ).style.animationDuration = `${val[1]}s`;
+      }
+    };
   }
 };
 
