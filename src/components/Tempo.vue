@@ -10,14 +10,27 @@
 <script>
 import RangeSlider from "vue-range-slider";
 import "vue-range-slider/dist/vue-range-slider.css";
+
+const socket = new WebSocket("ws://localhost:8999");
+
 export default {
+  components: {
+    RangeSlider
+  },
   data() {
     return {
       sliderValue: 60
     };
   },
-  components: {
-    RangeSlider
+  watch: {
+    sliderValue: function(newVal) {
+      const message = JSON.stringify({
+        address: "instrument/set_bpm",
+        name: "bpm",
+        beats: [newVal]
+      });
+      socket.send(message);
+    }
   }
 };
 </script>
