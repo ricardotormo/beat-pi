@@ -1,16 +1,21 @@
 <template>
   <div id="app">
+    <BaseInstrumentSelector />
+    <VuexTest />
     <DrumContainer />
   </div>
 </template>
 
 <script>
+import VuexTest from "./components/VuexTest.vue";
 import DrumContainer from "./components/DrumContainer.vue";
-
+import BaseInstrumentSelector from "./components/BaseInstrumentSelector.vue";
 export default {
   name: "App",
   components: {
-    DrumContainer
+    BaseInstrumentSelector,
+    DrumContainer,
+    VuexTest
   },
   data() {
     return {
