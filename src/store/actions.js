@@ -1,8 +1,11 @@
 export default {
-  addInstrument({ commit }, name) {
-    commit('addInstrument', name)
+  selectSampleType({ commit }, name) {
+    commit('selectSampleType', name)
   },
-  removeInstrument({ commit }, name) {
+  addSample({ commit }, name) {
+    commit('addSample', name)
+  },
+  removeSample({ commit }, name) {
     commit('removeInstrument', name)
   },
   addBeat({ commit }, payload) {

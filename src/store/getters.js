@@ -1,5 +1,6 @@
 export default {
-  instruments: state => Object.keys(state.instruments).map(name => {
-    return { name, beats: state.instruments[name]["beats"] };
-  })
+  userSamples: state => Object.keys(state.userSamples).map(name => {
+    return { name, beats: state.userSamples[name]["beats"] };
+  }),
+  builtInSamples: state => state.builtInSamples
 }

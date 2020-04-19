@@ -37,7 +37,7 @@
   </fragment>
 </template>
 <script>
-import drumList from "../drum/drum-list";
+import drumList from "../drum/sonicPiInstruments";
 export default {
   data() {
     return {

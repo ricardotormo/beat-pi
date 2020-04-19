@@ -1,8 +1,17 @@
 import Vue from 'vue'
 
 export default {
-  addInstrument(state, name) {
-    const instrument = {
+  selectSampleType(state, type) {
+    state.builtInSamples = state.builtInSamples.map(sample => {
+      return {
+        ...sample,
+        isSelected: sample.type == type ? true : false
+      }
+    })
+  },
+
+  addSample(state, name) {
+    const sample = {
       [name]: {
         beats: Array.from({ length: 16 }, () => -1),
         volume: 1,
@@ -11,18 +20,18 @@ export default {
         pan: 0
       }
     }
-    state.instruments = { ...instrument }
+    state.userSamples = { ...sample }
   },
 
-  removeInstrument(state, name) {
-    Vue.delete(state.instruments, name)
+  removeSample(state, name) {
+    Vue.delete(state.userSamples, name)
   },
 
   addBeat(state, { name, pos }) {
-    Vue.set(state.instruments[name]["beats"], pos, 1)
+    Vue.set(state.userSamples[name]["beats"], pos, 1)
   },
 
   removeBeat(state, { name, pos }) {
-    Vue.set(state.instruments[name]["beats"], pos, -1)
+    Vue.set(state.userSamples[name]["beats"], pos, -1)
   }
 }

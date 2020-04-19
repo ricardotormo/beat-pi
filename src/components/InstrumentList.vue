@@ -1,40 +1,34 @@
 <template>
   <fragment>
     <ul class="instrumentsList__type">
-      <li
-        v-for="(instrument, type) in instruments"
-        :class="{ active: activeType == type && activeType !== null }"
-        :key="type"
-        class="instrument"
-        @click="showInstList(type)"
-      >
-        <span class="icon-space">
-          <i :class="`inst-${type}`"></i>
-        </span>
-        {{ type | capitalize | toSpace }}
-      </li>
+      <fragment v-for="(sample, i) in builtInSamples" :key="i">
+        <InstrumentListTypeItem :sample="sample" />
+      </fragment>
     </ul>
     <div class="instrumentsList__name">
-      <input
-        class="search-inst-input"
-        v-if="activeTypeEls.length"
-        type="text"
-        v-model="searchInstruments"
-        placeholder="Search Instrument"
-      />
-      <ul class="type-name-list">
-        <li
-          @click="addInst(active.name)"
-          v-for="(active, i) in filterInstruments"
-          :key="i"
-          class="typeNames"
-        >
-          <span id="type-name-list-span">{{ active.name | capitalize | toSpace }}</span>
-        </li>
-      </ul>
+      <fragment v-for="(sample, i) in builtInSamples" :key="i">
+        <InstrumentListName :sample="sample" v-if="sample.isSelected" />
+      </fragment>
     </div>
   </fragment>
 </template>
+
+<script>
+import InstrumentListTypeItem from "./InstrumentListTypeItem";
+import InstrumentListName from "./InstrumentListName";
+
+import { mapGetters } from "vuex";
+export default {
+  components: {
+    InstrumentListTypeItem,
+    InstrumentListName
+  },
+
+  computed: {
+    ...mapGetters(["builtInSamples"])
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 $color-active: #5a005a;
