@@ -1,13 +1,11 @@
 <template>
-  <div>
+  <fragment>
     <button @click="isActive=true">Set active</button>
     <BaseModal :isActive="isActive" @onModalClose="isActive=false">
-      <div slot="instrumentList">
-        <InstrumentList />
-      </div>
+      <InstrumentList slot="instrumentList" />
       <!--<div slot="equalizer">adios</div>-->
     </BaseModal>
-  </div>
+  </fragment>
 </template>
 <script>
 //import InstrumentList from "@/components/InstrumentList.vue";

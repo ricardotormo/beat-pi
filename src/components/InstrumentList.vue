@@ -1,11 +1,11 @@
 <template>
   <fragment>
-    <ul class="instrumentsList__type">
+    <ul class="sampleList__type">
       <fragment v-for="(sample, i) in builtInSamples" :key="i">
         <InstrumentListTypeItem :sample="sample" />
       </fragment>
     </ul>
-    <div class="instrumentsList__name">
+    <div class="sampleList__name">
       <fragment v-for="(sample, i) in builtInSamples" :key="i">
         <InstrumentListName :sample="sample" v-if="sample.isSelected" />
       </fragment>
@@ -33,7 +33,7 @@ export default {
 <style lang="scss" scoped>
 $color-active: #5a005a;
 
-.instrumentsList_type {
+.sampleList__type {
   width: 40%;
   box-shadow: 1px 0 #d8d7d8;
   padding: 0;
@@ -81,7 +81,7 @@ $color-active: #5a005a;
     }
   }
 }
-.instrumentsList__name {
+.sampleList__name {
   width: 60%;
   height: 80vh;
   overflow: auto;

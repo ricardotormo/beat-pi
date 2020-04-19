@@ -1,45 +1,20 @@
 <template>
-  <div class="tempo-container">
-    <div class="tempo-bpm">Tempo: {{sliderValue}} bpm</div>
-    <div class="tempo-slider">
-      <RangeSlider class="slider" min="60" max="240" step="10" v-model="sliderValue" />
+  <fragment>
+    <div class="stepIndicator">
+      <div class="stepIndicator__half"></div>
+      <div class="stepIndicator__whole"></div>
     </div>
-  </div>
+
+    <div class="tempo__container">
+      <div class="tempo__value">Tempo: 60 bpm</div>
+      <div class="tempo__slider__container">
+        <!--Aqui va el componente RangeSlider-->
+      </div>
+    </div>
+  </fragment>
 </template>
 <script>
-import RangeSlider from "vue-range-slider";
-import "vue-range-slider/dist/vue-range-slider.css";
-export default {
-  data() {
-    return {
-      sliderValue: 60
-    };
-  },
-  components: {
-    RangeSlider
-  }
-};
+export default {};
 </script>
 <style lang="scss">
-.tempo-container {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background: #4d4d4d;
-  .slider {
-    .range-slider-fill {
-      background: #fed134 !important;
-    }
-  }
-  .tempo-bpm {
-    width: 12%;
-    color: #fff;
-  }
-  .tempo-slider {
-    width: 87%;
-    padding: 0 20px;
-  }
-}
 </style>

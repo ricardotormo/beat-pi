@@ -1,7 +1,13 @@
 <template>
-  <div>
-    <TheTempo />
-    <BaseBeatRow />
+  <div class="beatPad">
+    <div class="beatPad__container">
+      <div class="row">
+        <div class="row beatPad__content">
+          <TheTempo />
+          <BaseBeatRow />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>

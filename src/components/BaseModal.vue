@@ -9,9 +9,7 @@
         <slot name="equalizer"></slot>
       </sweet-modal-tab>
     </div>
-    <div v-else-if="hasOnlyInstrumentList">
-      <slot name="instrumentList"></slot>
-    </div>
+    <slot v-else-if="hasOnlySampleList" name="instrumentList"></slot>
   </sweet-modal>
 </template>
 <script>
@@ -35,7 +33,7 @@ export default {
     hasAllContentSlots() {
       return !!this.$slots["instrumentList"] && !!this.$slots["equalizer"];
     },
-    hasOnlyInstrumentList() {
+    hasOnlySampleList() {
       return !!this.$slots["instrumentList"];
     }
   },
