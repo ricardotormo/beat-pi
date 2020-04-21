@@ -2,10 +2,7 @@
   <div class="beatPad">
     <div class="beatPad__container">
       <div class="row">
-        <div class="row beatPad__content">
-          <TheTempo />
-          <BaseBeatRow />
-        </div>
+        <div class="row beatPad__content"></div>
       </div>
     </div>
   </div>
