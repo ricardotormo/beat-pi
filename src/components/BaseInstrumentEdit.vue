@@ -1,14 +1,10 @@
 <template>
-  <div>
-    <BaseModal>
-      <template slot="instrumentList">
-        <InstrumentList />
-      </template>
-      <template slot="equalizer">
-        <BaseEqualizer />
-      </template>
+  <fragment>
+    <BaseModal :isActive="isActive" @onModalClose="isActive=false">
+      <InstrumentList slot="instrumentList" />
+      <BaseEqualizer slot="equalizer" />
     </BaseModal>
-  </div>
+  </fragment>
 </template>
 <script>
 import BaseModal from "@/components/BaseModal.vue";

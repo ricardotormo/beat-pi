@@ -5,7 +5,7 @@
       <sweet-modal-tab title="Instruments" id="tab1">
         <slot name="instrumentList"></slot>
       </sweet-modal-tab>
-      <sweet-modal-tab title="Instruments" id="tab2">
+      <sweet-modal-tab title="Equalizer" id="tab2">
         <slot name="equalizer"></slot>
       </sweet-modal-tab>
     </div>
