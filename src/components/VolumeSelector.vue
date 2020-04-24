@@ -26,6 +26,8 @@ export default {
   background: #fff;
   border-bottom: 1px solid #eaeaea;
   line-height: 0;
+  padding-top: 10px;
+
   & .slider {
     & .range-slider-fill {
       background: #5a00aa !important;

@@ -1,7 +1,8 @@
 <template>
   <div class="echo__container">
-    <p class="echo__name">Echo</p>
     <div class="echo__slider">
+      <p class="echo__name">Echo</p>
+
       <RangeSlider
         class="slider"
         min="0"
@@ -32,23 +33,23 @@ export default {
   width: 100%;
   background: #fff;
   line-height: 0;
-
+  padding-top: 10px;
   & .slider {
     & .range-slider-fill {
       background: #5a00aa !important;
     }
   }
-  .echo__value {
-    width: 12%;
-    color: #fff;
-  }
+  // .echo__value {
+  //   width: 12%;
+  //   color: #fff;
+  // }
   .echo__slider {
-    width: 87%;
-    padding: 0 20px;
+    width: 100%;
+    padding: 0 65px;
   }
   .echo__name,
   .slider__value {
-    margin-left: 30px;
+    margin-left: 0;
   }
 }
 </style>

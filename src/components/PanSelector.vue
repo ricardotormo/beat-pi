@@ -1,8 +1,8 @@
 <template>
   <div class="pan__container">
-    <p class="pan__name">Pan</p>
     <div class="pan__container__slider"></div>
     <div class="pan__slider">
+      <p class="pan__name">Pan</p>
       <RangeSlider
         class="slider"
         min="1"
@@ -37,6 +37,7 @@ export default {
   background: #fff;
   border-bottom: 1px solid #eaeaea;
   line-height: 0;
+  padding-top: 10px;
 
   & .slider {
     // transform: rotate(-90deg);
@@ -47,12 +48,12 @@ export default {
   }
 
   .pan__slider {
-    width: 87%;
-    padding: 0 20px;
+    width: 100%;
+    padding: 0 65px;
   }
   .pan__name,
   .slider__value {
-    margin-left: 30px;
+    margin-left: 0px;
   }
 }
 </style>
