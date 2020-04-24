@@ -21,12 +21,12 @@ import { mapGetters } from "vuex";
 export default {
   components: {
     InstrumentListTypeItem,
-    InstrumentListName
+    InstrumentListName,
   },
 
   computed: {
-    ...mapGetters(["builtInSamples"])
-  }
+    ...mapGetters(["builtInSamples"]),
+  },
 };
 </script>
 

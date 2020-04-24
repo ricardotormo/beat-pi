@@ -1,10 +1,12 @@
 <template>
   <div class="beatPad">
-    <div class="beatPad__container">
+    <!-- <div class="beatPad__container">
       <div class="row">
         <div class="row beatPad__content"></div>
       </div>
-    </div>
+    </div> -->
+    <TheTempo />
+    <BaseBeatRow />
   </div>
 </template>
 <script>
@@ -14,9 +16,8 @@ import BaseBeatRow from "@/components/BaseBeatRow.vue";
 export default {
   components: {
     TheTempo,
-    BaseBeatRow
-  }
+    BaseBeatRow,
+  },
 };
 </script>
-<style scoped>
-</style>
+<style scoped></style>

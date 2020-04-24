@@ -1,9 +1,9 @@
 <template>
   <fragment>
-    <button @click="isActive=true">Set active</button>
-    <BaseModal :isActive="isActive" @onModalClose="isActive=false">
+    <button @click="isActive = true">Set active</button>
+    <BaseModal :isActive="isActive" @onModalClose="isActive = false">
       <InstrumentList slot="instrumentList" />
-      <!--<div slot="equalizer">adios</div>-->
+      <BaseEqualizer slot="equalizer" />
     </BaseModal>
   </fragment>
 </template>
@@ -11,17 +11,18 @@
 //import InstrumentList from "@/components/InstrumentList.vue";
 import BaseModal from "@/components/BaseModal.vue";
 import InstrumentList from "@/components/InstrumentList.vue";
+import BaseEqualizer from "@/components/BaseEqualizer.vue";
 export default {
   components: {
     BaseModal,
-    InstrumentList
+    InstrumentList,
+    BaseEqualizer,
   },
   data() {
     return {
-      isActive: false
+      isActive: false,
     };
-  }
+  },
 };
 </script>
-<style scoped>
-</style>
+<style scoped></style>

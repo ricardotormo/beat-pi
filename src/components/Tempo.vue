@@ -1,12 +1,17 @@
 <template>
   <div class="tempo-container">
-    <div class="tempo-bpm">Tempo: {{sliderValue}} bpm</div>
+    <div class="tempo-bpm">Tempo: {{ sliderValue }} bpm</div>
     <div class="tempo-slider">
-      <RangeSlider class="slider" min="60" max="240" step="10" v-model="sliderValue" />
+      <RangeSlider
+        class="slider"
+        min="60"
+        max="240"
+        step="10"
+        v-model="sliderValue"
+      />
     </div>
   </div>
 </template>
-
 <script>
 import RangeSlider from "vue-range-slider";
 import "vue-range-slider/dist/vue-range-slider.css";
@@ -15,11 +20,11 @@ const socket = new WebSocket("ws://localhost:8999");
 
 export default {
   components: {
-    RangeSlider
+    RangeSlider,
   },
   data() {
     return {
-      sliderValue: 60
+      sliderValue: 60,
     };
   },
   watch: {
@@ -27,14 +32,13 @@ export default {
       const message = JSON.stringify({
         address: "instrument/set_bpm",
         name: "bpm",
-        beats: [newVal]
+        beats: [newVal],
       });
       socket.send(message);
-    }
-  }
+    },
+  },
 };
 </script>
-
 <style lang="scss">
 .tempo-container {
   display: flex;

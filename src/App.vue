@@ -2,6 +2,9 @@
   <div id="app">
     <BaseInstrumentSelector />
     <DrumContainer />
+    <TheControls />
+    <!-- <BaseEqualizer /> -->
+    <TheBeatPad />
   </div>
 </template>
 
@@ -9,17 +12,23 @@
 //import VuexTest from "./components/VuexTest.vue";
 import DrumContainer from "./components/DrumContainer.vue";
 import BaseInstrumentSelector from "./components/BaseInstrumentSelector.vue";
+import TheControls from "@/components/TheControls.vue";
+// import BaseEqualizer from "@/components/BaseEqualizer.vue";
+import TheBeatPad from "@/components/TheBeatPad.vue";
 export default {
   name: "App",
   components: {
     BaseInstrumentSelector,
-    DrumContainer
+    DrumContainer,
+    TheControls,
+    // BaseEqualizer,
+    TheBeatPad,
   },
   data() {
     return {
-      isModalVisible: false
+      isModalVisible: false,
     };
-  }
+  },
 };
 </script>
 

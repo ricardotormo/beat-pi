@@ -25,8 +25,8 @@
 export default {
   props: {
     instrument: {
-      array: Number
-    }
+      array: Number,
+    },
   },
   data() {
     return {};
@@ -37,8 +37,8 @@ export default {
     },
     removeInstrument(instrument) {
       this.$emit("removeToParent", { name: instrument });
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

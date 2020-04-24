@@ -16,18 +16,18 @@
 export default {
   props: {
     isActive: {
-      type: Boolean
-    }
+      type: Boolean,
+    },
   },
   data() {
     return {
-      openModal: this.isActive
+      openModal: this.isActive,
     };
   },
   methods: {
     resetActiveOnClose() {
       this.$emit("onModalClose");
-    }
+    },
   },
   computed: {
     hasAllContentSlots() {
@@ -35,17 +35,26 @@ export default {
     },
     hasOnlySampleList() {
       return !!this.$slots["instrumentList"];
-    }
+    },
   },
   watch: {
     isActive(newValue) {
       if (newValue) {
         this.$refs.modal.open();
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style scoped>
+<style lang="scss">
+.sweet-content-content > div {
+  width: 100%;
+}
+.sweet-modal-tab {
+  display: flex;
+}
+.sweet-modal-tab > div {
+  width: 100%;
+}
 </style>
