@@ -23,7 +23,7 @@ export default [
       { id: "drum_bass_hard", name: "drum_bass_hard" },
       { id: "drum_cowbell", name: "drum_cowbell" },
       { id: "drum_roll", name: "drum_roll" }
-    ], isSelected: false
+    ], isSelected: true
   },
 
   //Electric sounds

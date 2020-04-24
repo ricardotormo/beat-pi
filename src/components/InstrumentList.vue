@@ -6,9 +6,9 @@
       </fragment>
     </ul>
     <div class="sampleList__name">
-      <fragment v-for="(sample, i) in builtInSamples" :key="i">
+      <div v-for="(sample, i) in builtInSamples" :key="i">
         <InstrumentListName :sample="sample" v-if="sample.isSelected" />
-      </fragment>
+      </div>
     </div>
   </fragment>
 </template>
@@ -21,12 +21,12 @@ import { mapGetters } from "vuex";
 export default {
   components: {
     InstrumentListTypeItem,
-    InstrumentListName,
+    InstrumentListName
   },
 
   computed: {
-    ...mapGetters(["builtInSamples"]),
-  },
+    ...mapGetters(["builtInSamples"])
+  }
 };
 </script>
 
