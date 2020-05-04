@@ -1,22 +1,24 @@
 <template>
   <div class="beat__row__container">
-    <SampleEdit />
-    <BaseInstrumentEdit />
-    <fragment v-for="i in 16" :key="i">
-      <BeatSelector />
-    </fragment>
+    <SampleEdit :userSample="userSample" />
+    <template v-for="(beat, i) in userSample.beats">
+      <BeatSelector :userSample="userSample" :pos="i" :key="i" />
+    </template>
   </div>
 </template>
 <script>
 import SampleEdit from "@/components/SampleEdit.vue";
-import BaseInstrumentEdit from "@/components/BaseInstrumentEdit.vue";
 import BeatSelector from "@/components/BeatSelector.vue";
 export default {
   components: {
     SampleEdit,
-    BaseInstrumentEdit,
-    BeatSelector,
+    BeatSelector
   },
+  props: {
+    userSample: {
+      type: Object
+    }
+  }
 };
 </script>
 <style scoped>

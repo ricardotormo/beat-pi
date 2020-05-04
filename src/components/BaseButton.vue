@@ -1,10 +1,24 @@
 <template>
   <div>
-    <button class="btn" type="button">
+    <button @click="emitActionName" class="btn" type="button">
       <slot name="title"></slot>
     </button>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    emitActionName() {
+      this.$emit("onButtonAction");
+    }
+  },
+  created() {
+    console.log(this.socket);
+  }
+};
+</script>
+
 <style lang="scss">
 .btn {
   background: white;

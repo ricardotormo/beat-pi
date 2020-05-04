@@ -1,5 +1,5 @@
 <template>
-  <li @click="addSample(item.name)" class="sampleList__item">
+  <li @click="addSample(item.id)" class="sampleList__item">
     <span id="type-name-list-span">{{ item.name }}</span>
   </li>
 </template>

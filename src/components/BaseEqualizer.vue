@@ -15,16 +15,12 @@ export default {
   components: {
     VolumeSelector,
     PanSelector,
-    EchoSelector,
-  },
+    EchoSelector
+  }
 };
 </script>
 <style lang="scss">
 .equalizer__container {
-  //   //   width: 400px;
-  //   //   height: 200px;
-  //   display: flex;
-  //   justify-content: center;
   border: 1px solid white;
 }
 </style>

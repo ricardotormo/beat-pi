@@ -1,18 +1,27 @@
 <template>
   <div class="type__container">
     <div class="type--trash">
-      <span>
+      <span @click="removeSample(userSample.name)">
         <i class="fi-trash"></i>
       </span>
     </div>
-    <div class="name">
-      <!-- <span class="type--cell">{{ instrument.name }}</span> -->
-      <span class="instrument__name__cell">Instrument</span>
+    <div class="name" @click="openSampleModal({action: 'edit', sampleName: userSample.name})">
+      <span class="userSample__name__cell">{{userSample.name}}</span>
     </div>
   </div>
 </template>
 <script>
-export default {};
+import { mapActions } from "vuex";
+export default {
+  props: {
+    userSample: {
+      type: Object
+    }
+  },
+  methods: {
+    ...mapActions(["removeSample", "openSampleModal"])
+  }
+};
 </script>
 <style lang="scss">
 .type__container {
@@ -24,7 +33,8 @@ export default {};
   color: #fff;
   & .name {
     width: 80%;
-    .instrument__name__cell {
+    cursor: pointer;
+    .userSample__name__cell {
       text-align: center;
       max-width: 80%;
       margin: auto;

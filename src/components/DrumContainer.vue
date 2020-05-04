@@ -13,10 +13,6 @@
         </button>
       </div>
     </div>
-    <sweet-modal ref="modal" title="Select an Instrument">
-      <template slot="box-action"></template>
-      <SelectInstrument @emitAddInst="onEmitAddInst" />
-    </sweet-modal>
 
     <div class="drumPad">
       <div class="drumkit-container">
@@ -44,7 +40,6 @@
 <script>
 import Tempo from "@/components/Tempo.vue";
 import DrumRow from "@/components/DrumRow.vue";
-import SelectInstrument from "@/components/SelectInstrument.vue";
 import BeatPad from "../drum/BeatPad";
 const bPad = new BeatPad(16);
 const socket = new WebSocket("ws://localhost:8999");
@@ -52,7 +47,6 @@ const socket = new WebSocket("ws://localhost:8999");
 export default {
   name: "DrumContainer",
   components: {
-    SelectInstrument,
     DrumRow,
     Tempo
   },
@@ -163,48 +157,5 @@ function getRemovedInstrument(oldValues, currentValues) {
 </script>
 
 <style lang="scss">
-@import "../assets/css/style.css";
-
-.drumPad {
-  margin-top: 25px;
-}
-.empty-of-instruments {
-  display: flex;
-  width: 100%;
-  align-content: center;
-  justify-content: center;
-  background: #858585;
-  height: 30vh;
-  color: white;
-  span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-.btn {
-  background: white;
-  border-radius: 0;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  transition: color 150ms ease-in-out;
-  height: 40px;
-  font-size: 1em;
-  border-radius: 2px;
-  border: none;
-  padding: 5px 25px;
-  cursor: pointer;
-  outline: none;
-  width: 180px;
-}
-.controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.tempo {
-  color: #fff;
-}
+//@import "../assets/css/style.css";
 </style>

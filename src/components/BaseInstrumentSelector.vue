@@ -1,28 +1,30 @@
 <template>
   <fragment>
-    <button @click="isActive = true">Set active</button>
-    <BaseModal :isActive="isActive" @onModalClose="isActive = false">
-      <InstrumentList slot="instrumentList" />
-      <BaseEqualizer slot="equalizer" />
+    <BaseModal
+      :name="'add'"
+      :isOpen="action.add.isCurrent"
+      :title="'Add a new sample'"
+      @onModalClose="closeSampleModal('add')"
+    >
+      <InstrumentList slot="builtInSamples" />
     </BaseModal>
   </fragment>
 </template>
 <script>
-//import InstrumentList from "@/components/InstrumentList.vue";
 import BaseModal from "@/components/BaseModal.vue";
 import InstrumentList from "@/components/InstrumentList.vue";
-import BaseEqualizer from "@/components/BaseEqualizer.vue";
+import { mapGetters, mapActions } from "vuex";
 export default {
   components: {
     BaseModal,
-    InstrumentList,
-    BaseEqualizer,
+    InstrumentList
   },
-  data() {
-    return {
-      isActive: false,
-    };
+  computed: {
+    ...mapGetters(["action"])
   },
+  methods: {
+    ...mapActions(["closeSampleModal"])
+  }
 };
 </script>
 <style scoped></style>

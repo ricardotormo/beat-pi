@@ -1,8 +1,27 @@
 <template>
-  <div class="cell"></div>
+  <div
+    class="cell"
+    @click="userSample.beats[pos] === -1 ? 
+    addBeat({name: userSample.name, pos: pos}) : 
+    removeBeat({name: userSample.name, pos: pos})"
+    :class="{ active: userSample.beats[pos] == 1 }"
+  ></div>
 </template>
 <script>
-export default {};
+import { mapActions } from "vuex";
+export default {
+  props: {
+    userSample: {
+      type: Object
+    },
+    pos: {
+      type: Number
+    }
+  },
+  methods: {
+    ...mapActions(["addBeat", "removeBeat"])
+  }
+};
 </script>
 <style lang="scss">
 .cell {
