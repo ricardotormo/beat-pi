@@ -35,7 +35,7 @@ export default {
   }
   .echo__slider {
     width: 100%;
-    padding: 0 55px;
+    padding: 0 65px;
   }
   .echo__name,
   .slider__value {

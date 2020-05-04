@@ -3,6 +3,7 @@
     <div class="pan__container__slider"></div>
     <div class="pan__slider">
       <p class="pan__name">Pan</p>
+
       <RangeSlider class="slider" min="1" max="100" step="1" v-model="sliderValue" />
       <p class="slider__value">Value: {{ sliderValue }}</p>
     </div>
@@ -29,7 +30,6 @@ export default {
   border-bottom: 1px solid #eaeaea;
   line-height: 0;
   padding-top: 10px;
-  padding-bottom: 20px;
   & .slider {
     padding: 0;
     & .range-slider-fill {
@@ -38,7 +38,7 @@ export default {
   }
   .pan__slider {
     width: 100%;
-    padding: 0 55px;
+    padding: 0 65px;
   }
   .pan__name,
   .slider__value {

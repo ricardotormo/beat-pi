@@ -27,7 +27,7 @@ export default {
   border-bottom: 1px solid #eaeaea;
   line-height: 0;
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 0;
   & .slider {
     padding: 0 15px;
     & .range-slider-fill {
