@@ -4,6 +4,7 @@ export default {
   userSamples: state => Object.keys(state.userSamples).map(name => {
     return { name, beats: state.userSamples[name]["beats"] };
   }),
+  stepIndicator: state => state.stepIndicator,
   builtInSamples: state => state.builtInSamples.map(sample => {
     return {
       ...sample,

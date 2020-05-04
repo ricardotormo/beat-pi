@@ -4,6 +4,7 @@
       <span>Please add a new sample</span>
     </div>
     <div v-else>
+      <StepIndicator />
       <TheTempo />
       <div v-for="(userSample, i) in userSamples" :key="i">
         <BaseBeatRow :userSample="userSample" />
@@ -14,12 +15,14 @@
 <script>
 import TheTempo from "@/components/TheTempo.vue";
 import BaseBeatRow from "@/components/BaseBeatRow.vue";
+import StepIndicator from "@/components/StepIndicator.vue";
 import { mapGetters } from "vuex";
 
 export default {
   components: {
     TheTempo,
-    BaseBeatRow
+    BaseBeatRow,
+    StepIndicator
   },
   computed: {
     ...mapGetters(["userSamples"])
@@ -27,6 +30,9 @@ export default {
 };
 </script>
 <style scoped>
+.beatPad {
+  position: relative;
+}
 .userSamples_empty {
   display: flex;
   width: 100%;

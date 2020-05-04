@@ -7,9 +7,12 @@ import builtInSamples from "../drum/builtInSamples";
 const socket = new WebSocket("ws://localhost:8999");
 Vue.use(Vuex)
 
-const myPlugin = store => {
-  console.log(store.subscribe)
-  // called when the store is initialized
+const socketPlugin = store => {
+  socket.onmessage = function (msg) {
+    const values = eval(JSON.parse(msg.data).args[0].value)
+    const stepObject = { step: values[0], duration: values[1] };
+    store.commit('setStep', stepObject)
+  }
   store.subscribe((mutation, state) => {
     if (mutation.type === 'addSample') {
       // Emit data to Sonic Pi
@@ -24,7 +27,7 @@ const myPlugin = store => {
       // Emit data to Sonic Pi
       const message = JSON.stringify({
         address: "instrument/set_beats",
-        name: name,
+        name: mutation.payload.name,
         beats: state['userSamples'][mutation.payload.name].beats
       });
       socket.send(message);
@@ -40,10 +43,11 @@ export default new Vuex.Store({
     },
     userSamples: {},
     builtInSamples: builtInSamples,
-    globalLevel: 1
+    globalLevel: 1,
+    stepIndicator: {}
   },
   getters,
   actions,
   mutations,
-  plugins: [myPlugin]
+  plugins: [socketPlugin]
 })

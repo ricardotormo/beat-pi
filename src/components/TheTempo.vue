@@ -1,22 +1,9 @@
 <template>
   <fragment>
-    <!-- //linea  aguja-->
-
-    <div class="stepIndicator">
-      <div class="stepIndicator--half"></div>
-      <div class="stepIndicator--whole"></div>
-    </div>
-
     <div class="tempo__container">
       <div class="tempo__value">Tempo: {{ sliderValue }} bpm</div>
       <div class="tempo__slider">
-        <RangeSlider
-          class="slider"
-          min="60"
-          max="240"
-          step="10"
-          v-model="sliderValue"
-        />
+        <RangeSlider class="slider" min="60" max="240" step="10" v-model="sliderValue" />
       </div>
     </div>
   </fragment>
@@ -28,11 +15,11 @@ const socket = new WebSocket("ws://localhost:8999");
 
 export default {
   components: {
-    RangeSlider,
+    RangeSlider
   },
   data() {
     return {
-      sliderValue: 60,
+      sliderValue: 60
     };
   },
   watch: {
@@ -40,11 +27,11 @@ export default {
       const message = JSON.stringify({
         address: "instrument/set_bpm",
         name: "bpm",
-        beats: [newVal],
+        beats: [newVal]
       });
       socket.send(message);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss">

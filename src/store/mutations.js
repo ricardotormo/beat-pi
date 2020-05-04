@@ -38,16 +38,16 @@ export default {
 
   addBeat(state, { name, pos }) {
     Vue.set(state.userSamples[name]["beats"], pos, 1);
-    // const message = JSON.stringify({
-    //   address: "instrument/set_beats",
-    //   name: name,
-    //   beats: state.userSamples[name]["beats"]
-    // });
-    // socket.send(message);
   },
 
   removeBeat(state, { name, pos }) {
     Vue.set(state.userSamples[name]["beats"], pos, -1)
+  },
+
+  setStep(state, { step, duration }) {
+    console.log(step, duration)
+    Vue.set(state.stepIndicator, "step", step);
+    Vue.set(state.stepIndicator, "duration", duration);
   },
 
   openSampleModal(state, { sampleName, action }) {
