@@ -12,6 +12,8 @@
 <script>
 import RangeSlider from "vue-range-slider";
 import "vue-range-slider/dist/vue-range-slider.css";
+import { mapActions, mapGetters } from "vuex";
+
 export default {
   components: {
     RangeSlider
@@ -20,6 +22,17 @@ export default {
     return {
       sliderValue: 0
     };
+  },
+  computed: {
+    ...mapGetters(["action"])
+  },
+  methods: {
+    ...mapActions(["editPan"])
+  },
+  watch: {
+    sliderValue(newValue) {
+      this.editPan({ name: this.action.edit.name, value: newValue });
+    }
   }
 };
 </script>

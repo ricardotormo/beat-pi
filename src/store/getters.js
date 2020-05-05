@@ -1,6 +1,7 @@
 export default {
   action: state => state.action,
   sampleModals: state => state.sampleModals,
+  bpm: state => state.bpm,
   userSamples: state => Object.keys(state.userSamples).map(name => {
     return { name, beats: state.userSamples[name]["beats"] };
   }),

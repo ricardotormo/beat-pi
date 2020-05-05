@@ -4,7 +4,7 @@
     <div class="volume__container__slider">
       <div class="volume__slider">
         <i class="fi-volume-none"></i>
-        <RangeSlider class="slider" min="0" max="100" step="1" />
+        <RangeSlider class="slider" min="0" max="100" step="1" v-model="sliderValue" />
         <i class="fi-volume"></i>
       </div>
     </div>
@@ -13,9 +13,27 @@
 <script>
 import RangeSlider from "vue-range-slider";
 import "vue-range-slider/dist/vue-range-slider.css";
+import { mapActions, mapGetters } from "vuex";
+
 export default {
   components: {
     RangeSlider
+  },
+  data() {
+    return {
+      sliderValue: 0
+    };
+  },
+  computed: {
+    ...mapGetters(["action"])
+  },
+  methods: {
+    ...mapActions(["editVolume"])
+  },
+  watch: {
+    sliderValue(newValue) {
+      this.editVolume({ name: this.action.edit.name, value: newValue });
+    }
   }
 };
 </script>

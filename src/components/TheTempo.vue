@@ -11,7 +11,7 @@
 <script>
 import RangeSlider from "vue-range-slider";
 import "vue-range-slider/dist/vue-range-slider.css";
-const socket = new WebSocket("ws://localhost:8999");
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   components: {
@@ -19,17 +19,18 @@ export default {
   },
   data() {
     return {
-      sliderValue: 60
+      sliderValue: 0
     };
   },
+  computed: {
+    ...mapGetters(["action"])
+  },
+  methods: {
+    ...mapActions(["setBpm"])
+  },
   watch: {
-    sliderValue: function(newVal) {
-      const message = JSON.stringify({
-        address: "instrument/set_bpm",
-        name: "bpm",
-        beats: [newVal]
-      });
-      socket.send(message);
+    sliderValue(newValue) {
+      this.setBpm(newValue);
     }
   }
 };

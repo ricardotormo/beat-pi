@@ -5,6 +5,18 @@ export default {
   addSample({ commit }, name) {
     commit('addSample', name)
   },
+  editEcho({ commit }, payload) {
+    commit('editEcho', payload)
+  },
+  setBpm({ commit }, value) {
+    commit('setBpm', value)
+  },
+  editPan({ commit }, payload) {
+    commit('editPan', payload)
+  },
+  editVolume({ commit }, payload) {
+    commit('editVolume', payload)
+  },
   removeSample({ commit }, name) {
     commit('removeSample', name)
   },

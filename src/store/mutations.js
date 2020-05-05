@@ -10,6 +10,22 @@ export default {
     })
   },
 
+  editEcho(state, { name, value }) {
+    Vue.set(state.userSamples[name], "echo", value);
+  },
+
+  editVolume(state, { name, value }) {
+    Vue.set(state.userSamples[name], "volume", value);
+  },
+
+  editPan(state, { name, value }) {
+    Vue.set(state.userSamples[name], "pan", value);
+  },
+
+  setBpm(state, value) {
+    Vue.set(state, "bpm", value);
+  },
+
   addSample(state, name) {
     const sample = {
       beats: Array.from({ length: 16 }, () => -1),
@@ -45,7 +61,6 @@ export default {
   },
 
   setStep(state, { step, duration }) {
-    console.log(step, duration)
     Vue.set(state.stepIndicator, "step", step);
     Vue.set(state.stepIndicator, "duration", duration);
   },
