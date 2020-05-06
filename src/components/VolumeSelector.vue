@@ -1,38 +1,41 @@
 <template>
   <div class="volume__container">
-    <p class="int__name">Instrument name</p>
     <div class="volume__container__slider">
       <div class="volume__slider">
         <i class="fi-volume-none"></i>
-        <RangeSlider class="slider" min="0" max="100" step="1" v-model="sliderValue" />
+        <RangeSlider class="slider" min="0" max="5" step="1" v-model="sample.volume" />
         <i class="fi-volume"></i>
       </div>
     </div>
+    <p class="slider__value">Value: {{sample.volume}}</p>
   </div>
 </template>
 <script>
 import RangeSlider from "vue-range-slider";
 import "vue-range-slider/dist/vue-range-slider.css";
-import { mapActions, mapGetters } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
+  props: {
+    sample: {
+      type: Object
+    }
+  },
   components: {
     RangeSlider
   },
   data() {
     return {
-      sliderValue: 0
+      sliderValue: this.sample ? this.sample.volume : 0
     };
-  },
-  computed: {
-    ...mapGetters(["action"])
   },
   methods: {
     ...mapActions(["editVolume"])
   },
   watch: {
-    sliderValue(newValue) {
-      this.editVolume({ name: this.action.edit.name, value: newValue });
+    "sample.volume"(newValue) {
+      console.log(newValue);
+      this.editVolume({ name: this.sample.name, value: newValue });
     }
   }
 };
@@ -40,12 +43,13 @@ export default {
 <style lang="scss">
 .volume__container {
   width: 100%;
-  text-align: center;
   background: #fff;
   border-bottom: 1px solid #eaeaea;
   line-height: 0;
-  padding-top: 10px;
-  padding-bottom: 0;
+  padding: 20px 0 40px 0;
+  .slider__value {
+    padding: 0px 65px;
+  }
   & .slider {
     padding: 0 15px;
     & .range-slider-fill {

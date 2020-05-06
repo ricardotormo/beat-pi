@@ -4,6 +4,11 @@ import actions from './actions'
 import mutations from './mutations'
 import getters from './getters'
 import builtInSamples from "../drum/builtInSamples";
+import VuexPersist from 'vuex-persist';
+const vuexPersist = new VuexPersist({
+  key: 'sp-app',
+  storage: window.localStorage
+});
 const socket = new WebSocket("ws://localhost:8999");
 Vue.use(Vuex)
 
@@ -50,8 +55,36 @@ const socketPlugin = store => {
       socket.send(message);
     }
 
+    console.log(mutation.type)
+    if (mutation.type === 'editVolume') {
+
+      const message = JSON.stringify({
+        address: "instrument/set_volume",
+        name: mutation.payload.name,
+        beats: [mutation.payload.value]
+      });
+      socket.send(message);
+    }
+
+    if (mutation.type === 'editPan') {
+      const message = JSON.stringify({
+        address: "instrument/set_pan",
+        name: mutation.payload.name,
+        beats: [mutation.payload.value]
+      });
+      socket.send(message);
+    }
+
+    if (mutation.type === 'editEcho') {
+      const message = JSON.stringify({
+        address: "instrument/set_reverb",
+        name: mutation.payload.name,
+        beats: [mutation.payload.value]
+      });
+      socket.send(message);
+    }
+
     if (mutation.type == 'setBpm') {
-      console.log(mutation)
       const message = JSON.stringify({
         address: "instrument/set_bpm",
         name: "bpm",
@@ -70,12 +103,11 @@ export default new Vuex.Store({
     },
     userSamples: {},
     builtInSamples: builtInSamples,
-    globalLevel: 1,
     stepIndicator: {},
     bpm: 60
   },
   getters,
   actions,
   mutations,
-  plugins: [socketPlugin]
+  plugins: [socketPlugin, vuexPersist.plugin]
 })

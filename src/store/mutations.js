@@ -32,13 +32,14 @@ export default {
       volume: 1,
       phase: 0,
       echo: 0,
-      pan: 0
+      pan: 0,
+      name: name
     }
     Vue.set(state.userSamples, name, sample);
 
     // Setting current actions
     Vue.set(state.action.edit, "isCurrent", false);
-    Vue.set(state.action.edit, "name", "");
+    Vue.set(state.action.edit, "sampleName", "");
     Vue.set(state.action.add, "isCurrent", false);
   },
 
@@ -68,12 +69,12 @@ export default {
   openSampleModal(state, { sampleName, action }) {
     Vue.set(state.action[action], "isCurrent", true);
     if (sampleName.length) {
-      Vue.set(state.action[action], "name", sampleName);
+      Vue.set(state.action[action], "sampleName", sampleName);
     }
   },
 
   closeSampleModal(state, name) {
     Vue.set(state.action[name], "isCurrent", false);
-    Vue.set(state.action['edit'], "name", "");
+    Vue.set(state.action['edit'], "sampleName", "");
   }
 }

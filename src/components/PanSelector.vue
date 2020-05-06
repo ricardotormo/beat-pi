@@ -4,17 +4,22 @@
     <div class="pan__slider">
       <p class="pan__name">Pan</p>
 
-      <RangeSlider class="slider" min="1" max="100" step="1" v-model="sliderValue" />
-      <p class="slider__value">Value: {{ sliderValue }}</p>
+      <RangeSlider class="slider" min="-1" max="1" step="1" v-model="sample.pan" />
+      <p class="slider__value">Value: {{ sample.pan }}</p>
     </div>
   </div>
 </template>
 <script>
 import RangeSlider from "vue-range-slider";
 import "vue-range-slider/dist/vue-range-slider.css";
-import { mapActions, mapGetters } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
+  props: {
+    sample: {
+      type: Object
+    }
+  },
   components: {
     RangeSlider
   },
@@ -23,15 +28,12 @@ export default {
       sliderValue: 0
     };
   },
-  computed: {
-    ...mapGetters(["action"])
-  },
   methods: {
     ...mapActions(["editPan"])
   },
   watch: {
-    sliderValue(newValue) {
-      this.editPan({ name: this.action.edit.name, value: newValue });
+    "sample.pan"(newValue) {
+      this.editPan({ name: this.sample.name, value: newValue });
     }
   }
 };
@@ -42,7 +44,7 @@ export default {
   background: #fff;
   border-bottom: 1px solid #eaeaea;
   line-height: 0;
-  padding-top: 10px;
+  padding: 40px 0;
   & .slider {
     padding: 0;
     & .range-slider-fill {

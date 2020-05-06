@@ -3,7 +3,7 @@
     <BaseModal
       :name="'edit'"
       :isOpen="action.edit.isCurrent"
-      :title="'Edit sample: ' + action.edit.name"
+      :title="'Edit sample: ' + action.edit.sampleName"
       @onModalClose="closeSampleModal('edit')"
     >
       <InstrumentList slot="builtInSamples" />

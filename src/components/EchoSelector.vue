@@ -2,17 +2,22 @@
   <div class="echo__container">
     <div class="echo__slider">
       <p class="echo__name">Echo</p>
-      <RangeSlider class="slider" min="0" max="100" step="1" v-model="sliderValue" />
-      <p class="slider__value">Value: {{ sliderValue }}</p>
+      <RangeSlider class="slider" min="0" max="1" step="1" v-model="sample.echo" />
+      <p class="slider__value">Value: {{ sample.echo }}</p>
     </div>
   </div>
 </template>
 <script>
 import RangeSlider from "vue-range-slider";
 import "vue-range-slider/dist/vue-range-slider.css";
-import { mapActions, mapGetters } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
+  props: {
+    sample: {
+      type: Object
+    }
+  },
   components: {
     RangeSlider
   },
@@ -21,15 +26,12 @@ export default {
       sliderValue: 0
     };
   },
-  computed: {
-    ...mapGetters(["action"])
-  },
   methods: {
     ...mapActions(["editEcho"])
   },
   watch: {
-    sliderValue(newValue) {
-      this.editEcho({ name: this.action.edit.name, value: newValue });
+    "sample.echo"(newValue) {
+      this.editEcho({ name: this.sample.name, value: newValue });
     }
   }
 };
@@ -39,9 +41,9 @@ export default {
   width: 100%;
   background: #fff;
   line-height: 0;
-  padding-top: 10px;
-  padding-bottom: 0;
+  padding: 40px 0 20px 0;
   & .slider {
+    padding: 0;
     & .range-slider-fill {
       background: #5a00aa !important;
     }

@@ -1,9 +1,10 @@
 export default {
   action: state => state.action,
   sampleModals: state => state.sampleModals,
+  currentSample: state => state.userSamples[state.action.edit.sampleName],
   bpm: state => state.bpm,
   userSamples: state => Object.keys(state.userSamples).map(name => {
-    return { name, beats: state.userSamples[name]["beats"] };
+    return { ...state.userSamples[name] };
   }),
   stepIndicator: state => state.stepIndicator,
   builtInSamples: state => state.builtInSamples.map(sample => {

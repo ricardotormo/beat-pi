@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <VolumeSelector />
+  <div v-if="currentSample">
+    <VolumeSelector :sample="currentSample" />
     <div class="equalizer__container">
-      <PanSelector />
-      <EchoSelector />
+      <PanSelector :sample="currentSample" />
+      <EchoSelector :sample="currentSample" />
     </div>
   </div>
 </template>
@@ -11,11 +11,15 @@
 import VolumeSelector from "@/components/VolumeSelector.vue";
 import PanSelector from "@/components/PanSelector.vue";
 import EchoSelector from "@/components/EchoSelector.vue";
+import { mapGetters } from "vuex";
 export default {
   components: {
     VolumeSelector,
     PanSelector,
     EchoSelector
+  },
+  computed: {
+    ...mapGetters(["currentSample", "userSamples"])
   }
 };
 </script>
