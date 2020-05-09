@@ -1,9 +1,9 @@
 <template>
-  <div class="echo__container">
-    <div class="echo__slider">
-      <p class="echo__name">Echo</p>
-      <RangeSlider class="slider" min="0" max="1" step="1" v-model="sample.echo" />
-      <p class="slider__value">Value: {{ sample.echo }}</p>
+  <div class="reverb__container">
+    <div class="reverb__slider">
+      <p class="reverb__name">Echo</p>
+      <RangeSlider class="slider" min="0" max="1" step="1" v-model="sample.reverb" />
+      <p class="slider__value">Value: {{ sample.reverb }}</p>
     </div>
   </div>
 </template>
@@ -27,17 +27,17 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["editEcho"])
+    ...mapActions(["setReverb"])
   },
   watch: {
-    "sample.echo"(newValue) {
-      this.editEcho({ name: this.sample.name, value: newValue });
+    "sample.reverb"(newValue) {
+      this.setReverb({ name: this.sample.name, value: newValue });
     }
   }
 };
 </script>
 <style lang="scss">
-.echo__container {
+.reverb__container {
   width: 100%;
   background: #fff;
   line-height: 0;
@@ -48,11 +48,11 @@ export default {
       background: #5a00aa !important;
     }
   }
-  .echo__slider {
+  .reverb__slider {
     width: 100%;
     padding: 0 65px;
   }
-  .echo__name,
+  .reverb__name,
   .slider__value {
     margin-left: 0;
   }

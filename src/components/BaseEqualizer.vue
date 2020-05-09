@@ -3,20 +3,20 @@
     <VolumeSelector :sample="currentSample" />
     <div class="equalizer__container">
       <PanSelector :sample="currentSample" />
-      <EchoSelector :sample="currentSample" />
+      <ReverbSelector :sample="currentSample" />
     </div>
   </div>
 </template>
 <script>
 import VolumeSelector from "@/components/VolumeSelector.vue";
 import PanSelector from "@/components/PanSelector.vue";
-import EchoSelector from "@/components/EchoSelector.vue";
+import ReverbSelector from "@/components/ReverbSelector.vue";
 import { mapGetters } from "vuex";
 export default {
   components: {
     VolumeSelector,
     PanSelector,
-    EchoSelector
+    ReverbSelector
   },
   computed: {
     ...mapGetters(["currentSample", "userSamples"])
