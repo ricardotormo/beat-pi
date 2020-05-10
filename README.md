@@ -10,10 +10,10 @@ This application (written in Vue.js and Node.js) allows you to create and manage
 
 Before you start, you need to have **Node.js** and **Sonic Pi** installed on your computer.
 To download node you can use this link: 
-https://nodejs.org/en/download/
+   https://nodejs.org/en/download/
 
 To download Sonic Pi use the following link:
-https://sonic-pi.net/
+   https://sonic-pi.net/
 
 ## Installation
 
@@ -22,9 +22,7 @@ https://sonic-pi.net/
 2. Navigate into the project you just downloaded, copy the beatPad.rb file and paste it into Sonic Pi
 
 3. Once pasted in Sonic PI, press play
-
    
-
    ![play_sonic_pi](doc_images/play_sonic_pi.gif)
 
 4. Open a terminal and navigate to the folder you downloaded:
@@ -51,7 +49,7 @@ https://sonic-pi.net/
    npm run serve
    ```
 
-7. Click the link that appears in your terminal to open the app:
+8. Click the link that appears in your terminal to open the app:
 
    ![](doc_images/open_app.gif)
 
@@ -71,7 +69,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Ricardo Tormo** - *Idea and main conception* 
+**Ricardo Tormo** - *Idea and main developer* 
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
