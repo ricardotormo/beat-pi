@@ -19,7 +19,7 @@ To download Sonic Pi use the following link:
 
 1. Download or clone this repository on your computer
 
-2. Navigate into the project you just downloaded, copy the beatPad.rb file and paste it into Sonic Pi
+2. Navigate into the project you just downloaded, copy the beatPadPi.rb file and paste it into Sonic Pi.
 
 3. Once pasted in Sonic PI, press play
    
@@ -28,7 +28,7 @@ To download Sonic Pi use the following link:
 4. Open a terminal and navigate to the folder you downloaded:
 
    ```shell
-   cd beat_pad_pi_folder
+   cd your_folder
    ```
 
 5. Type :
@@ -53,6 +53,12 @@ To download Sonic Pi use the following link:
 
    ![](doc_images/open_app.gif)
 
+## Configuring your ports
+
+* Node.js - Used to to send data to Sonic Pi
+* Vue.js - User interface and interaction with the app
+* Sonic Pi - Magic happens here :)
+  
 ## Built With
 
 * Node.js - Used to to send data to Sonic Pi

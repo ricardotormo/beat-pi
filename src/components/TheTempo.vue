@@ -30,9 +30,14 @@ export default {
   },
   watch: {
     currentTempo(newValue) {
-      console.log("hola");
       this.setBpm(newValue);
     }
+  },
+  mounted() {
+    const width = ((this.bpm - 60) / 180) * 100;
+    const slider = document.querySelector(".slider");
+    slider.querySelector(".range-slider-fill").style = `width:${width}%`;
+    slider.querySelector(".range-slider-knob").style = `left:${width}%`;
   }
 };
 </script>

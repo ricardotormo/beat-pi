@@ -1,13 +1,8 @@
 <template>
   <sweet-modal :ref="name" :isOpen="isOpen" :title="title" v-on:close="onModalClose">
     <template slot="box-action"></template>
-    <div v-if="hasAllContentSlots">
-      <sweet-modal-tab title="Instruments" id="tab1">
-        <slot name="builtInSamples"></slot>
-      </sweet-modal-tab>
-      <sweet-modal-tab title="Equalizer" id="tab2">
-        <slot name="equalizer"></slot>
-      </sweet-modal-tab>
+    <div v-if="equalizer">
+      <slot name="equalizer"></slot>
     </div>
     <slot v-else-if="hasOnlySampleList" name="builtInSamples"></slot>
   </sweet-modal>
@@ -40,8 +35,8 @@ export default {
     }
   },
   computed: {
-    hasAllContentSlots() {
-      return !!this.$slots["builtInSamples"] && !!this.$slots["equalizer"];
+    equalizer() {
+      return !!this.$slots["equalizer"];
     },
     hasOnlySampleList() {
       return !!this.$slots["builtInSamples"];

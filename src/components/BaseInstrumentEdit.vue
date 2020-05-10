@@ -6,7 +6,6 @@
       :title="'Edit sample: ' + action.edit.sampleName"
       @onModalClose="closeSampleModal('edit')"
     >
-      <InstrumentList slot="builtInSamples" />
       <BaseEqualizer slot="equalizer" />
     </BaseModal>
   </fragment>
@@ -14,13 +13,11 @@
 <script>
 import BaseModal from "@/components/BaseModal.vue";
 import BaseEqualizer from "@/components/BaseEqualizer.vue";
-import InstrumentList from "@/components/InstrumentList.vue";
 import { mapGetters, mapActions } from "vuex";
 export default {
   components: {
     BaseModal,
-    BaseEqualizer,
-    InstrumentList
+    BaseEqualizer
   },
   computed: {
     ...mapGetters(["action"])

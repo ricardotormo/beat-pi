@@ -216,38 +216,5 @@ export default [
       { id: "vinyl_scratch", name: "vinyl_scratch" },
       { id: "vinyl_hiss", name: "vinyl_hiss" }
     ], isSelected: false
-  },
-
-  //Glitchy sounds
-  {
-    type: "glitcht_sounds",
-    items: [
-      { id: "glitch_bass_g", name: "glitch_bass_g" },
-      { id: "glitch_perc_1", name: "glitch_perc_1" },
-      { id: "glitch_perc_2", name: "glitch_perc_2" },
-      { id: "glitch_perc_3", name: "glitch_perc_3" },
-      { id: "glitch_perc_4", name: "glitch_perc_4" },
-      { id: "glitch_perc_5", name: "glitch_perc_5" },
-      { id: "glitch_robot_1", name: "glitch_robot_1" },
-      { id: "glitch_robot_2", name: "glitch_robot_2" }
-    ], isSelected: false
-  },
-
-  //Mehackit sounds
-  {
-    type: "mehackit_sounds",
-    items: [
-      { id: "mehackit_phone_1", name: "mehackit_phone_1" },
-      { id: "mehackit_phone_2", name: "mehackit_phone_2" },
-      { id: "mehackit_phone_3", name: "mehackit_phone_3" },
-      { id: "mehackit_phone_4", name: "mehackit_phone_4" },
-      { id: "mehackit_robot_1", name: "mehackit_robot_1" },
-      { id: "mehackit_robot_2", name: "mehackit_robot_2" },
-      { id: "mehackit_robot_3", name: "mehackit_robot_3" },
-      { id: "mehackit_robot_4", name: "mehackit_robot_4" },
-      { id: "mehackit_robot_5", name: "mehackit_robot_5" },
-      { id: "mehackit_robot_6", name: "mehackit_robot_6" },
-      { id: "mehackit_robot_7", name: "mehackit_robot_7" }
-    ], isSelected: false
   }
 ];
