@@ -17,6 +17,14 @@ To download Sonic Pi use the following link:
 
    https://sonic-pi.net/
 
+This project was tested on:
+
+- Node version: 8.14.1
+- Sonic Pi version: 3.2
+
+If you encounter any problem running this project, make sure you are using
+the same versions as above.
+
 ## Installation
 
 1. Download or clone this repository on your computer
