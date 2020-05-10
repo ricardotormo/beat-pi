@@ -1,9 +1,9 @@
 <template>
   <fragment>
     <div class="tempo__container">
-      <div class="tempo__value">Tempo: {{ sliderValue }} bpm</div>
+      <div class="tempo__value">Tempo: {{ bpm }} bpm</div>
       <div class="tempo__slider">
-        <RangeSlider class="slider" min="60" max="240" step="10" v-model="sliderValue" />
+        <RangeSlider class="slider" min="60" max="240" step="10" v-model="currentTempo" />
       </div>
     </div>
   </fragment>
@@ -19,17 +19,18 @@ export default {
   },
   data() {
     return {
-      sliderValue: 0
+      currentTempo: this.bpm
     };
   },
   computed: {
-    ...mapGetters(["action"])
+    ...mapGetters(["bpm"])
   },
   methods: {
     ...mapActions(["setBpm"])
   },
   watch: {
-    sliderValue(newValue) {
+    currentTempo(newValue) {
+      console.log("hola");
       this.setBpm(newValue);
     }
   }
