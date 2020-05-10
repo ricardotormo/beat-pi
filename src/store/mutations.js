@@ -10,15 +10,15 @@ export default {
     })
   },
 
-  editEcho(state, { name, value }) {
-    Vue.set(state.userSamples[name], "echo", value);
+  setReverb(state, { name, value }) {
+    Vue.set(state.userSamples[name], "reverb", value);
   },
 
-  editVolume(state, { name, value }) {
+  setVolume(state, { name, value }) {
     Vue.set(state.userSamples[name], "volume", value);
   },
 
-  editPan(state, { name, value }) {
+  setPan(state, { name, value }) {
     Vue.set(state.userSamples[name], "pan", value);
   },
 
@@ -29,10 +29,9 @@ export default {
   addSample(state, name) {
     const sample = {
       beats: Array.from({ length: 16 }, () => -1),
-      volume: 1,
-      phase: 0,
-      echo: 0,
-      pan: 0,
+      volume: 50,
+      reverb: 1,
+      pan: 50,
       name: name
     }
     Vue.set(state.userSamples, name, sample);

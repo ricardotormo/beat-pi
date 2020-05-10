@@ -1,9 +1,9 @@
 <template>
   <div class="reverb__container">
     <div class="reverb__slider">
-      <p class="reverb__name">Echo</p>
-      <RangeSlider class="slider" min="0" max="1" step="1" v-model="sample.reverb" />
-      <p class="slider__value">Value: {{ sample.reverb }}</p>
+      <p class="reverb__name">Reverb</p>
+      <RangeSlider class="slider" min="1" max="100" step="1" v-model="sample.reverb" />
+      <!-- <p class="slider__value">Value: {{ sample.reverb }}</p> -->
     </div>
   </div>
 </template>

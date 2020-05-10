@@ -44,7 +44,7 @@ const socketPlugin = store => {
       socket.send(message);
     }
 
-    if (mutation.type === 'editVolume') {
+    if (mutation.type === 'setVolume') {
       const message = JSON.stringify({
         address: "instrument/set_volume",
         name: mutation.payload.name,
@@ -53,7 +53,7 @@ const socketPlugin = store => {
       socket.send(message);
     }
 
-    if (mutation.type === 'editPan') {
+    if (mutation.type === 'setPan') {
       const message = JSON.stringify({
         address: "instrument/set_pan",
         name: mutation.payload.name,
@@ -62,7 +62,7 @@ const socketPlugin = store => {
       socket.send(message);
     }
 
-    if (mutation.type === 'editEcho') {
+    if (mutation.type === 'setReverb') {
       const message = JSON.stringify({
         address: "instrument/set_reverb",
         name: mutation.payload.name,

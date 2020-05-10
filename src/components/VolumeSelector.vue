@@ -3,11 +3,11 @@
     <div class="volume__container__slider">
       <div class="volume__slider">
         <i class="fi-volume-none"></i>
-        <RangeSlider class="slider" min="0" max="5" step="1" v-model="sample.volume" />
+        <RangeSlider class="slider" min="1" max="100" step="20" v-model="sample.volume" />
         <i class="fi-volume"></i>
       </div>
     </div>
-    <p class="slider__value">Value: {{sample.volume}}</p>
+    <!-- <p class="slider__value">Value: {{sample.volume}}</p> -->
   </div>
 </template>
 <script>
@@ -24,18 +24,12 @@ export default {
   components: {
     RangeSlider
   },
-  data() {
-    return {
-      sliderValue: this.sample ? this.sample.volume : 0
-    };
-  },
   methods: {
-    ...mapActions(["editVolume"])
+    ...mapActions(["setVolume"])
   },
   watch: {
     "sample.volume"(newValue) {
-      console.log(newValue);
-      this.editVolume({ name: this.sample.name, value: newValue });
+      this.setVolume({ name: this.sample.name, value: newValue });
     }
   }
 };

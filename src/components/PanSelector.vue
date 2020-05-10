@@ -5,7 +5,7 @@
       <p class="pan__name">Pan</p>
 
       <RangeSlider class="slider" min="1" max="100" step="1" v-model="sample.pan" />
-      <p class="slider__value">Value: {{ sample.pan }}</p>
+      <!-- <p class="slider__value">Value: {{ sample.pan }}</p> -->
     </div>
   </div>
 </template>
@@ -39,11 +39,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["editPan"])
+    ...mapActions(["setPan"])
   },
   watch: {
     "sample.pan"(newValue) {
-      this.editPan({ name: this.sample.name, value: newValue });
+      this.setPan({ name: this.sample.name, value: newValue });
     }
   }
 };
