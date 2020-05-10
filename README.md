@@ -55,9 +55,7 @@ To download Sonic Pi use the following link:
 
 ## Configuring your ports
 
-* Node.js - Used to to send data to Sonic Pi
-* Vue.js - User interface and interaction with the app
-* Sonic Pi - Magic happens here :)
+If you want to configure app ports, you can rename .env.example to .env and modify the constant values
   
 ## Built With
 
@@ -65,19 +63,14 @@ To download Sonic Pi use the following link:
 * Vue.js - User interface and interaction with the app
 * Sonic Pi - Magic happens here :)
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
-## Authors
+## Authors and contributors
 
-**Ricardo Tormo** - *Idea and main developer* 
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+Author: **RicardoTormo** - *Idea and main developer*
+Contributor: **AdrianiFs** https://github.com/AdrianiFS - *CSS and UI help* 
 
 ## License
 

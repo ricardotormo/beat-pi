@@ -12,9 +12,6 @@ export default {
     emitActionName() {
       this.$emit("onButtonAction");
     }
-  },
-  created() {
-    console.log(this.socket);
   }
 };
 </script>
