@@ -70,6 +70,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Authors and contributors
 
 Author: **RicardoTormo** - *Idea and main developer*
+
 Contributor: **AdrianiFs** https://github.com/AdrianiFS - *CSS and UI help* 
 
 ## License
