@@ -10,9 +10,11 @@ This application (written in Vue.js and Node.js) allows you to create and manage
 
 Before you start, you need to have **Node.js** and **Sonic Pi** installed on your computer.
 To download node you can use this link: 
+
    https://nodejs.org/en/download/
 
 To download Sonic Pi use the following link:
+
    https://sonic-pi.net/
 
 ## Installation
@@ -55,17 +57,13 @@ To download Sonic Pi use the following link:
 
 ## Configuring your ports
 
-If you want to configure app ports, you can rename .env.example to .env and modify the constant values
+If you want to configure app ports, you can rename .env.example to .env and modify the values.
   
 ## Built With
 
 * Node.js - Used to to send data to Sonic Pi
 * Vue.js - User interface and interaction with the app
 * Sonic Pi - Magic happens here :)
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors and contributors
 
