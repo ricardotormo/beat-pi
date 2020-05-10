@@ -4,7 +4,7 @@
     <div class="pan__slider">
       <p class="pan__name">Pan</p>
 
-      <RangeSlider class="slider" min="-1" max="1" step="1" v-model="sample.pan" />
+      <RangeSlider class="slider" min="1" max="100" step="1" v-model="sample.pan" />
       <p class="slider__value">Value: {{ sample.pan }}</p>
     </div>
   </div>
@@ -27,6 +27,16 @@ export default {
     return {
       sliderValue: 0
     };
+  },
+  computed: {
+    mapPan() {
+      if (this.sample.pan == 50) {
+        return 0;
+      } else if (this.sample.pan < 50) {
+        return -(1 - this.sample.pan / 50);
+      }
+      return this.sample.pan / 50 - 1;
+    }
   },
   methods: {
     ...mapActions(["editPan"])
