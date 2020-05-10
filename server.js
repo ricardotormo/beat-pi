@@ -18,6 +18,7 @@ var udpPort = new osc.UDPPort({
  * @param {String} address
  * @param {String} message
  */
+// Credit to https://github.com/talk2MeGooseman/twitch-sonic-pi-messager
 const sendUDPMessage = (address, message = []) => {
 
   // Build an array of integer from the comma seperated list of values
