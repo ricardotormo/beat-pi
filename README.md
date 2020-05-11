@@ -4,6 +4,7 @@ This application (written in Vue.js and Node.js) allows you to create and manage
 
 ![](doc_images/add_samples.gif)
 
+![](doc_images/edit_sample.gif)
 
 
 ## Prerequisites
