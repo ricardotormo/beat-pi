@@ -1,10 +1,11 @@
-# Beat Pi
-
-This application (written in Vue.js and Node.js) allows you to create and manage beats in Sonic Pi through a graphical interface.
-
-![](doc_images/add_samples.gif)
-
-![](doc_images/edit_sample.gif)
+<div align="center">
+  <h1>Beat Pi</h1>
+  <img src="https://raw.githubusercontent.com/ricardotormo/beat-pi/master/doc_images/add_samples.gif" width="49%" />
+  <img src="https://raw.githubusercontent.com/ricardotormo/beat-pi/master/doc_images/edit_sample.gif" width="49%" />
+  <p>
+    <strong>Create and manage beats in Sonic Pi through a graphical interface</strong>
+  </p>
+</div>
 
 
 ## Prerequisites
