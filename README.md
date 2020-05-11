@@ -10,6 +10,7 @@ This application (written in Vue.js and Node.js) allows you to create and manage
 ## Prerequisites
 
 Before you start, you need to have **Node.js** and **Sonic Pi** installed on your computer.
+
 To download node you can use this link: 
 
    https://nodejs.org/en/download/
