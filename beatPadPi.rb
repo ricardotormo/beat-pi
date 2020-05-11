@@ -1,4 +1,3 @@
-
 use_osc "localhost",4560
 use_debug false
 set :bpm, 60
@@ -98,7 +97,7 @@ define :map_volume do |value|
     return 0
   end
   print value
-  return value * 5 / 100
+  return value * 10 / 500
 end
 
 define :map_reverb do |value|
