@@ -63,9 +63,9 @@ wss.on('connection', (ws) => {
   //connection is up, let's add a simple simple event
   ws.on('message', (message) => {
     //const {type, beats} = JSON.parse(message);
-    const { address, name, beats } = JSON.parse(message);
+    const { address, name, data } = JSON.parse(message);
 
-    sendUDPMessage(`/${address}/${name}`, beats);
+    sendUDPMessage(`/${address}/${name}`, data);
   });
 
   // Send osc received message

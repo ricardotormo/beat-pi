@@ -54,7 +54,7 @@ export default {
   background: #fff;
   border-bottom: 1px solid #eaeaea;
   line-height: 0;
-  padding: 40px 0;
+  padding: 30px 0 10px 0;
   & .slider {
     padding: 0;
     & .range-slider-fill {

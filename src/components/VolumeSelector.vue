@@ -3,7 +3,7 @@
     <div class="volume__container__slider">
       <div class="volume__slider">
         <i class="fi-volume-none"></i>
-        <RangeSlider class="slider" min="1" max="100" step="20" v-model="sample.volume" />
+        <RangeSlider class="slider" min="1" max="500" step="1" v-model="sample.volume" />
         <i class="fi-volume"></i>
       </div>
     </div>
@@ -40,7 +40,7 @@ export default {
   background: #fff;
   border-bottom: 1px solid #eaeaea;
   line-height: 0;
-  padding: 20px 0 40px 0;
+  padding: 10px 0 10px 0;
   .slider__value {
     padding: 0px 65px;
   }

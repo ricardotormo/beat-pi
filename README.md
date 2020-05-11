@@ -21,6 +21,7 @@ This project was tested on:
 
 - Node version: 8.14.1
 - Sonic Pi version: 3.2
+- Chrome browser version: 81.0.4044
 
 If you encounter any problem running this project, make sure you are using
 the same versions as above.
@@ -78,6 +79,10 @@ If you want to configure app ports, you can rename .env.example to .env and modi
 Author: **RicardoTormo** - *Idea and main developer*
 
 Contributor: **AdrianiFs** https://github.com/AdrianiFS - *CSS and UI help* 
+
+## Help us to improve this project
+
+If you find a bug or you want to contribute to this project, please read the CONTRIBUTING.md.
 
 ## License
 
