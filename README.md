@@ -1,4 +1,4 @@
-# BeatPad Pi
+# Beat Pi
 
 This application (written in Vue.js and Node.js) allows you to create and manage beats in Sonic Pi through a graphical interface.
 
