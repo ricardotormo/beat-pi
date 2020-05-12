@@ -63,21 +63,7 @@ cd your_folder
 
 ```
 
-  
-
-5. Type :
-
-  
-
-```shell
-
-node server
-
-```
-
-  
-
-6. Open another terminal (still in the same path) and type:
+5. Open another terminal (still in the same path) and type:
 
   
 
@@ -89,13 +75,24 @@ npm install
 
   
 
-7. When the installation is complete, write:
+6. When the installation is complete, write:
 
   
 
 ```shell
 
 npm run serve
+
+```
+  
+
+7. Type :
+
+  
+
+```shell
+
+node server
 
 ```
 
