@@ -77,7 +77,8 @@ If you encounter any problem running this project, make sure you are using the s
 
    ```
 
-7. Return to the terminal in which you typed **npm install** 
+7. Return to the terminal in which you typed **npm install**.
+    
    If the installation is completed, type this command:
 
    ```shell
