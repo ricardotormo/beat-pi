@@ -38,7 +38,6 @@ If you encounter any problem running this project, make sure you are using the s
 ## Installation
 
   
-
 1. Download or clone this repository on your computer
 
   
@@ -49,61 +48,47 @@ If you encounter any problem running this project, make sure you are using the s
 
 3. Once pasted in Sonic PI, press play
 
-![play_sonic_pi](doc_images/play_sonic_pi.gif)
+   ![play_sonic_pi](doc_images/play_sonic_pi.gif)
 
   
 
 4. Open a terminal and navigate to the folder you downloaded:
 
-  
 
-```shell
+   ```shell
 
-cd your_folder
+   cd your_folder
 
-```
+   ```
 
-5. Open another terminal (still in the same path) and type:
+5. Type the following command:
 
-  
+   ```shell
 
-```shell
+   npm install
 
-npm install
+   ```
 
-```
+6. Open Another terminal (still in the same path) and type :
 
-  
+   ```shell
 
-6. When the installation is complete, write:
+   node server
 
-  
+   ```
 
-```shell
+7. Return to the terminal in which you typed **npm install** 
+   If the installation is completed, type this command:
 
-npm run serve
+   ```shell
 
-```
-  
+   npm run serve
 
-7. Type :
-
-  
-
-```shell
-
-node server
-
-```
-
-  
+   ```
 
 8. Click the link that appears in your terminal to open the app:
-
-  
-
-![](doc_images/open_app.gif)
-
+   
+   ![](doc_images/open_app.gif)
   
 
 ## Configuring your ports
@@ -127,13 +112,14 @@ If you want to configure app ports, you can rename .env.example to .env and modi
 ## Authors and contributors
 
 Author: **RicardoTormo** - *Idea and main developer*
+
 Contributor: **AdrianiFs** https://github.com/AdrianiFS - *CSS and UI help*
 
   
 
 ## Help us to improve this project
 
-If you find a bug or you want to contribute to this project, please read the CONTRIBUTING.md.
+If you find a bug or you want to contribute to this project, please read the [CONTRIBUTING.md](CONTRIBUTING.md).
 
   
 
