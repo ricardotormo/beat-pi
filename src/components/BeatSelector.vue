@@ -4,7 +4,7 @@
     @click="userSample.beats[pos] === -1 ? 
     addBeat({name: userSample.name, pos: pos}) : 
     removeBeat({name: userSample.name, pos: pos})"
-    :class="{ active: userSample.beats[pos] == 1 }"
+    :class="{ active: userSample.beats[pos] == 1, onBeat: pos%4 === 0  &&  userSample.beats[pos] !== 1}"
   ></div>
 </template>
 <script>
@@ -13,6 +13,9 @@ export default {
   props: {
     userSample: {
       type: Object
+    },
+    index: {
+      type: Number
     },
     pos: {
       type: Number
@@ -29,5 +32,8 @@ export default {
   height: 70px;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.9);
   cursor: pointer;
+  &.onBeat {
+    background: rgba(0, 0, 0, 0.2);
+  }
 }
 </style>
