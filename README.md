@@ -6,6 +6,7 @@ Create and manage beats in Sonic Pi through a graphical interface
   </h4>
   <img src="https://raw.githubusercontent.com/ricardotormo/beat-pi/master/doc_images/add_samples.gif" width="49%" />
   <img src="https://raw.githubusercontent.com/ricardotormo/beat-pi/master/doc_images/edit_sample.gif" width="49%" />
+  <img src="https://raw.githubusercontent.com/ricardotormo/beat-pi/master/doc_images/wave.png" width="100%" />
 </div>
 
 
